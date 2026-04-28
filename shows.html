@@ -12,10 +12,11 @@
 <body>
   <nav class="container-fluid">
     <ul>
-      <li><strong>GWR Shows</strong></li>
+      <li><strong>GWR</strong></li>
     </ul>
     <ul>
       <li><a href="index.html">Accueil</a></li>
+      <li><a href="shows.html">Shows</a></li>
       <li><a href="planning.html">Planning</a></li>
       <li><a href="rediffs.html" role="button">Rediffs</a></li>
     </ul>
@@ -23,60 +24,72 @@
 
   <main class="container">
     <div class="grid">
-      <section>
-        <hgroup>
-          <h2>Les shows GWR</h2>
-          <h3>Collision, Genesis et Dynasty</h3>
-        </hgroup>
-
-        <p>
-          Chaque show possède sa propre identité, son rythme et son rôle dans la semaine RP de la GWR.
-        </p>
-
-        <figure>
-          <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=85" alt="Arène de spectacle avec public">
-          <figcaption>
-            <a href="https://unsplash.com/" target="_blank">Image d’ambiance via Unsplash</a>
-          </figcaption>
-        </figure>
-
-        <div class="show-grid">
-          <article class="show-card collision">
-            <img class="show-logo" src="img/gwr-collision.png" alt="Logo GWR Collision">
-            <h3>Collision</h3>
-            <p>
-              Tous les lundis. Le show qui lance la semaine avec des confrontations directes,
-              des tensions explosives et des rivalités qui prennent feu.
-            </p>
-            <a href="rediffs.html#collision" role="button">Voir Collision</a>
-          </article>
-
-          <article class="show-card genesis">
-            <img class="show-logo" src="img/gwr-genesis.png" alt="Logo GWR Genesis">
-            <h3>Genesis</h3>
-            <p>
-              Tous les jeudis. Le show des révélations, des tournants narratifs,
-              des retours inattendus et des nouvelles directions.
-            </p>
-            <a href="rediffs.html#genesis" role="button">Voir Genesis</a>
-          </article>
-
-          <article class="show-card dynasty">
-            <img class="show-logo" src="img/gwr-dynasty.png" alt="Logo GWR Dynasty">
-            <h3>Dynasty</h3>
-            <p>
-              Tous les vendredis. Le show prestige de fin de semaine,
-              là où les rivalités se concluent et les héritages se construisent.
-            </p>
-            <a href="rediffs.html#dynasty" role="button">Voir Dynasty</a>
-          </article>
+      <section class="shows-wwe-page">
+        <div class="shows-banner">
+          <div>
+            <img src="img/logo-gwr.png" alt="Logo Global Wrestling Revolution">
+            <h2>Shows</h2>
+          </div>
         </div>
 
-        <h3>Une continuité commune</h3>
-        <p>
-          Les événements de Collision, Genesis et Dynasty font avancer le même univers.
-          Chaque promo, segment et match peut avoir un impact sur la suite de la fédération.
-        </p>
+        <div class="shows-content">
+          <p class="shows-category">
+            <span>GWR:</span> Weekly Shows
+          </p>
+
+          <div class="wwe-show-list">
+            <article class="wwe-show-item">
+              <div class="show-poster">
+                <img src="img/gwr-collision.png" alt="Logo GWR Collision">
+              </div>
+              <div class="show-info">
+                <span class="show-day">Tous les lundis</span>
+                <h3>GWR Collision</h3>
+                <p>
+                  Le show qui ouvre la semaine. Rivalités directes, confrontations explosives
+                  et premiers impacts sur la route des prochains événements.
+                </p>
+                <a href="rediffs.html#collision" role="button">Voir les rediffs</a>
+              </div>
+            </article>
+
+            <article class="wwe-show-item">
+              <div class="show-poster">
+                <img src="img/gwr-genesis.png" alt="Logo GWR Genesis">
+              </div>
+              <div class="show-info purple">
+                <span class="show-day">Tous les jeudis</span>
+                <h3>GWR Genesis</h3>
+                <p>
+                  Le show des révélations. Retours, surprises, nouvelles directions
+                  et tournants importants dans les storylines de la fédération.
+                </p>
+                <a href="rediffs.html#genesis" role="button">Voir les rediffs</a>
+              </div>
+            </article>
+
+            <article class="wwe-show-item">
+              <div class="show-poster">
+                <img src="img/gwr-dynasty.png" alt="Logo GWR Dynasty">
+              </div>
+              <div class="show-info blue">
+                <span class="show-day">Tous les vendredis</span>
+                <h3>GWR Dynasty</h3>
+                <p>
+                  Le show prestige de fin de semaine. Les rivalités montent en intensité,
+                  les héritages se construisent et les grandes décisions tombent.
+                </p>
+                <a href="rediffs.html#dynasty" role="button">Voir les rediffs</a>
+              </div>
+            </article>
+          </div>
+
+          <h3>Une seule continuité</h3>
+          <p>
+            Collision, Genesis et Dynasty font avancer le même univers GWR.
+            Chaque promo, segment et match peut influencer la suite de la fédération.
+          </p>
+        </div>
       </section>
     </div>
   </main>
@@ -86,7 +99,7 @@
       <article>
         <hgroup>
           <h2>Alertes shows</h2>
-          <h3>Reçois les annonces des prochaines cartes</h3>
+          <h3>Reçois les annonces des prochaines cartes GWR</h3>
         </hgroup>
         <form class="grid">
           <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
