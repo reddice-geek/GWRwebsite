@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GWR — Planning</title>
+  <meta name="description" content="Planning hebdomadaire de la Global Wrestling Revolution.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>GWR Planning</strong></li>
+    </ul>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shows.html">Shows</a></li>
+      <li><a href="rediffs.html" role="button">Rediffs</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Planning GWR</h2>
+          <h3>Le programme de la semaine</h3>
+        </hgroup>
+
+        <p>
+          Le planning met automatiquement le jour actuel en avant.
+          Les jours sans show servent aux promos, annonces, segments et préparations RP.
+        </p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85" alt="Scène lumineuse de spectacle">
+          <figcaption>
+            <a href="https://unsplash.com/" target="_blank">Image d’ambiance via Unsplash</a>
+          </figcaption>
+        </figure>
+
+        <div class="planning-box">
+          <h3 id="today-title">Chargement du planning...</h3>
+          <div id="week-planning" class="week-grid"></div>
+        </div>
+
+        <h3>Rythme officiel</h3>
+        <p>
+          Lundi : Collision. Jeudi : Genesis. Vendredi : Dynasty.
+          Les autres jours permettent de faire vivre les rivalités entre les shows.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Recevoir le planning</h2>
+          <h3>Ne rate aucun show GWR</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
+          <input type="email" id="email" name="email" placeholder="Adresse email" aria-label="Adresse email" required>
+          <button type="submit" onclick="event.preventDefault()">S’inscrire</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer class="container">
+    <small>
+      <a href="shows.html">Shows</a> • <a href="rediffs.html">Rediffs</a>
+    </small>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
