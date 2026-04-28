@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  initPlanning();
+  setActiveNav();
+  injectTopTicker();
+  initDynamicPlanning();
   initTabs();
   openTabFromHash();
 });
+
+/* ================================
+   CONFIGURATION DES SHOWS GWR
+================================ */
 
 const GWR_SHOWS = [
   {
@@ -16,7 +22,7 @@ const GWR_SHOWS = [
     durationHours: 2,
     logo: "img/gwr-collision.png",
     color: "red",
-    replay: "rediffs.html#collision"
+    link: "rediffs.html#collision"
   },
   {
     id: "genesis",
@@ -29,7 +35,7 @@ const GWR_SHOWS = [
     durationHours: 2,
     logo: "img/gwr-genesis.png",
     color: "purple",
-    replay: "rediffs.html#genesis"
+    link: "rediffs.html#genesis"
   },
   {
     id: "dynasty",
@@ -42,43 +48,98 @@ const GWR_SHOWS = [
     durationHours: 2,
     logo: "img/gwr-dynasty.png",
     color: "blue",
-    replay: "rediffs.html#dynasty"
+    link: "rediffs.html#dynasty"
   }
 ];
 
-let nextShowDate = null;
-let nextShowData = null;
+let countdownTarget = null;
+let countdownMode = "next";
 
-function initPlanning() {
-  const hasPlanning =
+/* ================================
+   MENU ACTIF
+================================ */
+
+function setActiveNav() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (!href) return;
+
+    const hrefPage = href.split("#")[0];
+
+    if (hrefPage === currentPage) {
+      link.classList.add("active-nav");
+    }
+  });
+}
+
+/* ================================
+   TICKER DYNAMIQUE EN HAUT
+================================ */
+
+function injectTopTicker() {
+  const nav = document.querySelector("nav.container-fluid");
+  if (!nav) return;
+
+  const ticker = document.createElement("div");
+  ticker.className = "gwr-ticker";
+
+  ticker.innerHTML = `
+    <div class="gwr-ticker-track">
+      <span>Collision • Lundi 19h</span>
+      <span>Genesis • Jeudi 19h</span>
+      <span>Dynasty • Vendredi 20h</span>
+      <span>Rediffusions disponibles sur YouTube</span>
+      <span>Global Wrestling Revolution</span>
+      <span>Collision • Lundi 19h</span>
+      <span>Genesis • Jeudi 19h</span>
+      <span>Dynasty • Vendredi 20h</span>
+      <span>Rediffusions disponibles sur YouTube</span>
+      <span>Global Wrestling Revolution</span>
+    </div>
+  `;
+
+  nav.insertAdjacentElement("afterend", ticker);
+}
+
+/* ================================
+   PLANNING DYNAMIQUE
+================================ */
+
+function initDynamicPlanning() {
+  const hasNewPlanning =
     document.getElementById("next-show-card") &&
     document.getElementById("countdown") &&
     document.getElementById("past-shows") &&
     document.getElementById("upcoming-shows") &&
     document.getElementById("weekly-timeline");
 
-  if (!hasPlanning) return;
+  const hasOldPlanning =
+    document.getElementById("week-planning") &&
+    document.getElementById("today-title");
 
-  renderPlanning();
-  updateCountdown();
+  if (hasNewPlanning) {
+    renderFullPlanning();
+    updateCountdown();
 
-  setInterval(updateCountdown, 1000);
-  setInterval(renderPlanning, 30000);
+    setInterval(() => {
+      renderFullPlanning();
+    }, 30000);
+
+    setInterval(() => {
+      updateCountdown();
+    }, 1000);
+  }
+
+  if (hasOldPlanning) {
+    renderSimplePlanning();
+  }
 }
 
-function renderPlanning() {
-  const now = new Date();
-
-  const next = getNextShow(now);
-  nextShowDate = next.date;
-  nextShowData = next.show;
-
-  renderNextShow(next.show, next.date);
-  renderPastAndUpcoming(now);
-  renderWeeklyTimeline(now);
-}
-
-function getShowDateForCurrentWeek(show, now) {
+function getStartDateForThisWeek(show, now = new Date()) {
   const date = new Date(now);
   const currentDay = date.getDay();
   const diff = show.dayIndex - currentDay;
@@ -89,158 +150,210 @@ function getShowDateForCurrentWeek(show, now) {
   return date;
 }
 
-function getNextShow(now) {
-  const nextShows = GWR_SHOWS.map(show => {
-    const date = getShowDateForCurrentWeek(show, now);
-
-    if (date <= now) {
-      date.setDate(date.getDate() + 7);
-    }
-
-    return { show, date };
-  }).sort((a, b) => a.date - b.date);
-
-  return nextShows[0];
+function getEndDate(startDate, show) {
+  const end = new Date(startDate);
+  end.setHours(end.getHours() + show.durationHours);
+  return end;
 }
 
-function getShowEndDate(startDate, show) {
-  const endDate = new Date(startDate);
-  endDate.setHours(endDate.getHours() + show.durationHours);
-  return endDate;
-}
+function getStatus(show, now = new Date()) {
+  const start = getStartDateForThisWeek(show, now);
+  const end = getEndDate(start, show);
 
-function getShowStatus(show, now) {
-  const startDate = getShowDateForCurrentWeek(show, now);
-  const endDate = getShowEndDate(startDate, show);
-
-  if (now >= startDate && now < endDate) {
+  if (now >= start && now < end) {
     return {
       status: "live",
       label: "En cours",
-      date: startDate
+      start,
+      end
     };
   }
 
-  if (now >= endDate) {
+  if (now >= end) {
     return {
       status: "past",
       label: "Show passé",
-      date: startDate
+      start,
+      end
     };
   }
 
   return {
     status: "upcoming",
     label: "À venir",
-    date: startDate
+    start,
+    end
   };
 }
 
-function renderNextShow(show, date) {
+function getNextShow(now = new Date()) {
+  const liveShow = GWR_SHOWS
+    .map(show => ({ show, ...getStatus(show, now) }))
+    .find(item => item.status === "live");
+
+  if (liveShow) {
+    return {
+      show: liveShow.show,
+      date: liveShow.end,
+      mode: "live",
+      label: "Show en cours"
+    };
+  }
+
+  const upcoming = GWR_SHOWS.map(show => {
+    let date = getStartDateForThisWeek(show, now);
+
+    if (date <= now) {
+      date.setDate(date.getDate() + 7);
+    }
+
+    return {
+      show,
+      date
+    };
+  }).sort((a, b) => a.date - b.date);
+
+  return {
+    show: upcoming[0].show,
+    date: upcoming[0].date,
+    mode: "next",
+    label: "Prochain show"
+  };
+}
+
+function renderFullPlanning() {
+  const now = new Date();
+  const next = getNextShow(now);
+
+  countdownTarget = next.date;
+  countdownMode = next.mode;
+
+  renderMainNextShow(next);
+  renderPastShows(now);
+  renderUpcomingShows(now);
+  renderTimeline(now);
+}
+
+function renderMainNextShow(next) {
   const container = document.getElementById("next-show-card");
   if (!container) return;
 
+  const isLive = next.mode === "live";
+
   container.innerHTML = `
-    <div class="next-show-logo">
-      <img src="${show.logo}" alt="Logo ${show.name}">
+    <div class="next-show-logo ${next.show.color}">
+      <img src="${next.show.logo}" alt="Logo ${next.show.name}">
     </div>
 
-    <div class="next-show-info">
-      <span class="status-pill next">Prochain show</span>
-      <h3>${show.name}</h3>
+    <div class="next-show-info ${next.show.color}">
+      <span class="status-pill ${isLive ? "live" : "next"}">
+        ${isLive ? "En cours maintenant" : "Prochain show"}
+      </span>
+
+      <h3>${next.show.name}</h3>
+
       <p>
-        ${show.dayLabel} à ${formatHour(show.hour, show.minute)}
+        ${next.show.dayLabel} • ${formatTime(next.show.hour, next.show.minute)}
       </p>
-      <strong>${formatFullDate(date)}</strong>
-      <a href="${show.replay}" role="button">Voir la page du show</a>
+
+      <strong>
+        ${isLive ? "Fin estimée : " : "Début : "}
+        ${formatDate(next.date)}
+      </strong>
+
+      <a href="${next.show.link}" role="button">
+        Voir la page du show
+      </a>
     </div>
   `;
 }
 
-function renderPastAndUpcoming(now) {
-  const pastContainer = document.getElementById("past-shows");
-  const upcomingContainer = document.getElementById("upcoming-shows");
+function renderPastShows(now) {
+  const container = document.getElementById("past-shows");
+  if (!container) return;
 
-  if (!pastContainer || !upcomingContainer) return;
+  container.innerHTML = "";
 
-  const statuses = GWR_SHOWS.map(show => {
-    const data = getShowStatus(show, now);
-    return {
-      ...data,
-      show
-    };
-  });
-
-  const pastShows = statuses
+  const pastShows = GWR_SHOWS
+    .map(show => ({ show, ...getStatus(show, now) }))
     .filter(item => item.status === "past")
-    .sort((a, b) => b.date - a.date);
+    .sort((a, b) => b.start - a.start);
 
-  const liveShows = statuses
-    .filter(item => item.status === "live");
-
-  const upcomingShows = statuses
-    .filter(item => item.status === "upcoming")
-    .sort((a, b) => a.date - b.date);
-
-  pastContainer.innerHTML = "";
-
-  if (pastShows.length === 0) {
-    pastContainer.innerHTML = `<p class="empty-message">Aucun show passé cette semaine.</p>`;
-  } else {
-    pastShows.forEach(item => {
-      pastContainer.appendChild(createScheduleCard(item.show, item.date, "past", "Show passé"));
-    });
+  if (!pastShows.length) {
+    container.innerHTML = `<p class="empty-message">Aucun show passé cette semaine.</p>`;
+    return;
   }
 
-  upcomingContainer.innerHTML = "";
-
-  liveShows.forEach(item => {
-    upcomingContainer.appendChild(createScheduleCard(item.show, item.date, "live", "En cours"));
+  pastShows.forEach(item => {
+    container.appendChild(createMiniShowCard(item.show, item.start, "past", "Show passé"));
   });
-
-  upcomingShows.forEach(item => {
-    upcomingContainer.appendChild(createScheduleCard(item.show, item.date, "upcoming", "À venir"));
-  });
-
-  if (liveShows.length === 0 && upcomingShows.length === 0) {
-    const next = getNextShow(now);
-    upcomingContainer.appendChild(createScheduleCard(next.show, next.date, "next-week", "Semaine prochaine"));
-  }
 }
 
-function createScheduleCard(show, date, status, label) {
+function renderUpcomingShows(now) {
+  const container = document.getElementById("upcoming-shows");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const currentWeekShows = GWR_SHOWS
+    .map(show => ({ show, ...getStatus(show, now) }))
+    .filter(item => item.status === "live" || item.status === "upcoming")
+    .sort((a, b) => a.start - b.start);
+
+  if (currentWeekShows.length) {
+    currentWeekShows.forEach(item => {
+      container.appendChild(
+        createMiniShowCard(
+          item.show,
+          item.start,
+          item.status,
+          item.status === "live" ? "En cours" : "À venir"
+        )
+      );
+    });
+
+    return;
+  }
+
+  const next = getNextShow(now);
+  container.appendChild(createMiniShowCard(next.show, next.date, "next-week", "Semaine prochaine"));
+}
+
+function createMiniShowCard(show, date, status, label) {
   const card = document.createElement("article");
   card.className = `show-mini-card ${status}`;
 
   card.innerHTML = `
     <img src="${show.logo}" alt="Logo ${show.name}">
+
     <div>
       <span class="status-pill ${status}">${label}</span>
       <h4>${show.name}</h4>
-      <p>${show.dayLabel} • ${formatHour(show.hour, show.minute)}</p>
-      <small>${formatFullDate(date)}</small>
+      <p>${show.dayLabel} • ${formatTime(show.hour, show.minute)}</p>
+      <small>${formatDate(date)}</small>
     </div>
   `;
 
   return card;
 }
 
-function renderWeeklyTimeline(now) {
+function renderTimeline(now) {
   const container = document.getElementById("weekly-timeline");
   if (!container) return;
 
   container.innerHTML = "";
 
   GWR_SHOWS.forEach(show => {
-    const data = getShowStatus(show, now);
-    const item = document.createElement("article");
+    const statusData = getStatus(show, now);
 
-    item.className = `timeline-show ${data.status}`;
+    const item = document.createElement("article");
+    item.className = `timeline-show ${statusData.status}`;
+
     item.innerHTML = `
       <span>${show.dayLabel}</span>
       <img src="${show.logo}" alt="Logo ${show.name}">
-      <strong>${formatHour(show.hour, show.minute)}</strong>
-      <small>${data.label}</small>
+      <strong>${formatTime(show.hour, show.minute)}</strong>
+      <small>${statusData.label}</small>
     `;
 
     container.appendChild(item);
@@ -249,45 +362,85 @@ function renderWeeklyTimeline(now) {
 
 function updateCountdown() {
   const countdown = document.getElementById("countdown");
-  if (!countdown || !nextShowDate) return;
+  if (!countdown || !countdownTarget) return;
 
   const now = new Date();
-  const distance = nextShowDate - now;
+  const distance = countdownTarget.getTime() - now.getTime();
 
   if (distance <= 0) {
-    renderPlanning();
+    renderFullPlanning();
     return;
   }
 
-  const totalSeconds = Math.floor(distance / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
+  const secondsTotal = Math.floor(distance / 1000);
+  const days = Math.floor(secondsTotal / 86400);
+  const hours = Math.floor((secondsTotal % 86400) / 3600);
+  const minutes = Math.floor((secondsTotal % 3600) / 60);
+  const seconds = secondsTotal % 60;
+
+  const label = countdownMode === "live" ? "Fin du show dans" : "Début du show dans";
+  const labelElement = document.querySelector(".countdown-label");
+
+  if (labelElement) {
+    labelElement.textContent = label;
+  }
 
   countdown.innerHTML = `
-    <span>${String(days).padStart(2, "0")}<small>jours</small></span>
-    <span>${String(hours).padStart(2, "0")}<small>heures</small></span>
-    <span>${String(minutes).padStart(2, "0")}<small>min</small></span>
-    <span>${String(seconds).padStart(2, "0")}<small>sec</small></span>
+    <span>${pad(days)}<small>jours</small></span>
+    <span>${pad(hours)}<small>heures</small></span>
+    <span>${pad(minutes)}<small>min</small></span>
+    <span>${pad(seconds)}<small>sec</small></span>
   `;
 }
 
-function formatHour(hour, minute) {
-  return `${String(hour).padStart(2, "0")}h${minute > 0 ? String(minute).padStart(2, "0") : ""}`;
+/* Compatibilité avec l’ancien planning */
+function renderSimplePlanning() {
+  const container = document.getElementById("week-planning");
+  const title = document.getElementById("today-title");
+
+  if (!container || !title) return;
+
+  const now = new Date();
+
+  container.innerHTML = "";
+
+  const week = [
+    { label: "Lundi", show: "Collision", desc: "19h", dayIndex: 1 },
+    { label: "Mardi", show: "Préparation RP", desc: "Promos et segments", dayIndex: 2 },
+    { label: "Mercredi", show: "Cartes & annonces", desc: "Préparation des shows", dayIndex: 3 },
+    { label: "Jeudi", show: "Genesis", desc: "19h", dayIndex: 4 },
+    { label: "Vendredi", show: "Dynasty", desc: "20h", dayIndex: 5 },
+    { label: "Samedi", show: "Réactions RP", desc: "Retombées des shows", dayIndex: 6 },
+    { label: "Dimanche", show: "Pré-show", desc: "Préparation Collision", dayIndex: 0 }
+  ];
+
+  const currentDay = now.getDay();
+  const next = getNextShow(now);
+
+  title.textContent = `${next.label} : ${next.show.name}`;
+
+  week.forEach(day => {
+    const card = document.createElement("article");
+    card.className = "day-card";
+
+    if (day.dayIndex === currentDay) {
+      card.classList.add("active");
+    }
+
+    card.innerHTML = `
+      <strong>${day.label}</strong>
+      <span>${day.show}</span>
+      <small>${day.desc}</small>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
-function formatFullDate(date) {
-  return new Intl.DateTimeFormat("fr-FR", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit"
-  }).format(date);
-}
+/* ================================
+   REDIFFS : ONGLETS
+================================ */
 
-/* Onglets rediffs */
 function initTabs() {
   const buttons = document.querySelectorAll(".tab-button");
   const panels = document.querySelectorAll(".tab-panel");
@@ -303,9 +456,10 @@ function initTabs() {
 
       button.classList.add("active");
 
-      const selectedPanel = document.getElementById(tabName);
-      if (selectedPanel) {
-        selectedPanel.classList.add("active");
+      const panel = document.getElementById(tabName);
+
+      if (panel) {
+        panel.classList.add("active");
         history.replaceState(null, "", `#${tabName}`);
       }
     });
@@ -326,4 +480,26 @@ function openTabFromHash() {
 
   button.classList.add("active");
   panel.classList.add("active");
+}
+
+/* ================================
+   OUTILS
+================================ */
+
+function pad(number) {
+  return String(number).padStart(2, "0");
+}
+
+function formatTime(hour, minute) {
+  return `${pad(hour)}h${minute > 0 ? pad(minute) : ""}`;
+}
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat("fr-FR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(date);
 }
