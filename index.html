@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GWR — Global Wrestling Revolution</title>
+  <meta name="description" content="Portail officiel de la EFED RP Global Wrestling Revolution.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>GWR</strong></li>
+    </ul>
+    <ul>
+      <li><a href="shows.html">Shows</a></li>
+      <li><a href="planning.html">Planning</a></li>
+      <li><a href="rediffs.html" role="button">Rediffs</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section class="hero-page">
+        <hgroup>
+          <h2>Global Wrestling Revolution</h2>
+          <h3>Le portail officiel de la EFED RP GWR</h3>
+        </hgroup>
+
+        <p>
+          Collision le lundi, Genesis le jeudi, Dynasty le vendredi.
+          Retrouve les shows, le planning, les rediffusions YouTube et l’univers complet de la GWR.
+        </p>
+
+        <figure>
+          <img class="main-logo" src="img/logo-gwr.png" alt="Logo Global Wrestling Revolution">
+          <figcaption>
+            <a href="shows.html">Découvrir les shows GWR</a>
+          </figcaption>
+        </figure>
+
+        <h3>Une fédération RP moderne</h3>
+        <p>
+          La GWR mélange roleplay, rivalités, promos, shows hebdomadaires et continuité narrative,
+          dans une ambiance inspirée des grands shows de catch.
+        </p>
+
+        <h3>Accès rapide</h3>
+        <div class="actions">
+          <a href="planning.html" role="button">Voir le planning</a>
+          <a href="rediffs.html" role="button" class="secondary">Voir les rediffs</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Rejoins la révolution</h2>
+          <h3>Inscris ton pseudo RP pour suivre les annonces GWR</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
+          <input type="email" id="email" name="email" placeholder="Adresse email" aria-label="Adresse email" required>
+          <button type="submit" onclick="event.preventDefault()">S’inscrire</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer class="container">
+    <small>
+      <a href="about.html">À propos</a> • <a href="planning.html">Planning</a>
+    </small>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
