@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GWR — Shows</title>
+  <meta name="description" content="Les shows officiels de la Global Wrestling Revolution.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>GWR Shows</strong></li>
+    </ul>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="planning.html">Planning</a></li>
+      <li><a href="rediffs.html" role="button">Rediffs</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Les shows GWR</h2>
+          <h3>Collision, Genesis et Dynasty</h3>
+        </hgroup>
+
+        <p>
+          Chaque show possède sa propre identité, son rythme et son rôle dans la semaine RP de la GWR.
+        </p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=85" alt="Arène de spectacle avec public">
+          <figcaption>
+            <a href="https://unsplash.com/" target="_blank">Image d’ambiance via Unsplash</a>
+          </figcaption>
+        </figure>
+
+        <div class="show-grid">
+          <article class="show-card collision">
+            <img class="show-logo" src="img/gwr-collision.png" alt="Logo GWR Collision">
+            <h3>Collision</h3>
+            <p>
+              Tous les lundis. Le show qui lance la semaine avec des confrontations directes,
+              des tensions explosives et des rivalités qui prennent feu.
+            </p>
+            <a href="rediffs.html#collision" role="button">Voir Collision</a>
+          </article>
+
+          <article class="show-card genesis">
+            <img class="show-logo" src="img/gwr-genesis.png" alt="Logo GWR Genesis">
+            <h3>Genesis</h3>
+            <p>
+              Tous les jeudis. Le show des révélations, des tournants narratifs,
+              des retours inattendus et des nouvelles directions.
+            </p>
+            <a href="rediffs.html#genesis" role="button">Voir Genesis</a>
+          </article>
+
+          <article class="show-card dynasty">
+            <img class="show-logo" src="img/gwr-dynasty.png" alt="Logo GWR Dynasty">
+            <h3>Dynasty</h3>
+            <p>
+              Tous les vendredis. Le show prestige de fin de semaine,
+              là où les rivalités se concluent et les héritages se construisent.
+            </p>
+            <a href="rediffs.html#dynasty" role="button">Voir Dynasty</a>
+          </article>
+        </div>
+
+        <h3>Une continuité commune</h3>
+        <p>
+          Les événements de Collision, Genesis et Dynasty font avancer le même univers.
+          Chaque promo, segment et match peut avoir un impact sur la suite de la fédération.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Alertes shows</h2>
+          <h3>Reçois les annonces des prochaines cartes</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
+          <input type="email" id="email" name="email" placeholder="Adresse email" aria-label="Adresse email" required>
+          <button type="submit" onclick="event.preventDefault()">S’inscrire</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer class="container">
+    <small>
+      <a href="index.html">Accueil</a> • <a href="about.html">À propos</a>
+    </small>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
