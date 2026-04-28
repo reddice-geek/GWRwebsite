@@ -7,6 +7,382 @@
   <meta name="description" content="Planning dynamique de la Global Wrestling Revolution.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .planning-fallback {
+      background: #fff;
+      color: #111;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+
+    .planning-fallback h2,
+    .planning-fallback h3,
+    .planning-fallback h4,
+    .planning-fallback p {
+      color: #111;
+    }
+
+    .planning-hero {
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.86), rgba(0,0,0,.42)),
+        url("https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .planning-hero h2,
+    .planning-hero p {
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: .65rem;
+      padding: .32rem .65rem;
+      background: #e50914;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .next-show-zone {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 1rem;
+      width: min(980px, 92%);
+      margin: 1rem auto;
+    }
+
+    .next-show-card,
+    .countdown-card,
+    .schedule-columns article,
+    .week-timeline-box {
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+      box-shadow: 0 8px 22px rgba(0,0,0,.12);
+    }
+
+    .next-show-card {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      min-height: 210px;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .next-show-logo {
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      background:
+        linear-gradient(135deg, rgba(229,9,20,.45), rgba(0,0,0,.9)),
+        url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85") center/cover;
+    }
+
+    .next-show-logo img {
+      width: 100%;
+      max-height: 135px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0,0,0,.85));
+    }
+
+    .next-show-info {
+      padding: 1rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .next-show-info.red {
+      background: #e50914;
+    }
+
+    .next-show-info.blue {
+      background: #006dff;
+    }
+
+    .next-show-info.purple {
+      background: #5030a8;
+    }
+
+    .next-show-info h3,
+    .next-show-info p {
+      color: #fff;
+    }
+
+    .next-show-info h3 {
+      margin: .45rem 0;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: .95;
+    }
+
+    .next-show-info strong {
+      margin-bottom: .8rem;
+      color: #fff;
+    }
+
+    .next-show-info a[role="button"] {
+      width: max-content;
+      background: rgba(0,0,0,.32);
+    }
+
+    .countdown-card {
+      padding: 1rem;
+      background: #111;
+      color: #fff;
+    }
+
+    .countdown-label {
+      display: block;
+      margin-bottom: .9rem;
+      color: #aaa;
+      font-size: .78rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .55rem;
+    }
+
+    .countdown span {
+      display: grid;
+      place-items: center;
+      min-height: 78px;
+      background: #1f1f1f;
+      border-bottom: 4px solid #e50914;
+      color: #fff;
+      font-size: 1.9rem;
+      font-weight: 1000;
+    }
+
+    .countdown small {
+      display: block;
+      margin-top: .1rem;
+      color: #aaa;
+      font-size: .65rem;
+      text-transform: uppercase;
+    }
+
+    .schedule-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      width: min(980px, 92%);
+      margin: 1rem auto;
+    }
+
+    .schedule-columns article {
+      padding: 1rem;
+    }
+
+    .schedule-columns h3,
+    .week-timeline-box h3 {
+      padding-bottom: .45rem;
+      border-bottom: 2px solid #e50914;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: .65rem;
+    }
+
+    .show-mini-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: .75rem;
+      align-items: center;
+      padding: .75rem;
+      background: #111;
+      color: #fff;
+    }
+
+    .show-mini-card img {
+      width: 100%;
+      max-height: 65px;
+      object-fit: contain;
+    }
+
+    .show-mini-card h4 {
+      margin: .25rem 0;
+      color: #fff;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .show-mini-card p {
+      margin: 0;
+      color: #ddd;
+      font-size: .82rem;
+    }
+
+    .show-mini-card small {
+      color: #aaa;
+    }
+
+    .show-mini-card.past {
+      opacity: .75;
+    }
+
+    .show-mini-card.live {
+      border-left: 5px solid #e50914;
+      box-shadow: 0 0 18px rgba(229,9,20,.24);
+    }
+
+    .show-mini-card.upcoming,
+    .show-mini-card.next-week {
+      border-left: 5px solid #006dff;
+    }
+
+    .status-pill {
+      display: inline-block;
+      width: max-content;
+      padding: .25rem .45rem;
+      font-size: .65rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: #333;
+      color: #fff;
+    }
+
+    .status-pill.next,
+    .status-pill.live {
+      background: #e50914;
+    }
+
+    .status-pill.upcoming,
+    .status-pill.next-week {
+      background: #006dff;
+    }
+
+    .status-pill.past {
+      background: #555;
+    }
+
+    .empty-message {
+      padding: .8rem;
+      background: #eee;
+      color: #333 !important;
+    }
+
+    .week-timeline-box {
+      width: min(980px, 92%);
+      margin: 1rem auto 1.5rem;
+      padding: 1rem;
+    }
+
+    .weekly-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+
+    .timeline-show {
+      padding: .85rem;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      border-top: 5px solid #555;
+    }
+
+    .timeline-show.live {
+      border-top-color: #e50914;
+    }
+
+    .timeline-show.upcoming {
+      border-top-color: #006dff;
+    }
+
+    .timeline-show.past {
+      opacity: .75;
+    }
+
+    .timeline-show span,
+    .timeline-show strong,
+    .timeline-show small {
+      display: block;
+    }
+
+    .timeline-show span {
+      color: #c9a447;
+      font-size: .75rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .timeline-show img {
+      width: 100%;
+      max-height: 75px;
+      object-fit: contain;
+      margin: .55rem 0;
+    }
+
+    .timeline-show strong {
+      color: #fff;
+    }
+
+    .timeline-show small {
+      color: #aaa;
+      text-transform: uppercase;
+      font-size: .7rem;
+    }
+
+    .planning-note {
+      width: min(980px, 92%);
+      margin: 1rem auto 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .next-show-zone,
+      .schedule-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .next-show-card {
+        grid-template-columns: 1fr;
+      }
+
+      .weekly-timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .planning-hero {
+        min-height: 160px;
+        padding: 1rem;
+      }
+
+      .next-show-zone,
+      .schedule-columns,
+      .week-timeline-box,
+      .planning-note {
+        width: 94%;
+      }
+
+      .show-mini-card {
+        grid-template-columns: 85px 1fr;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .countdown span {
+        min-height: 64px;
+        font-size: 1.45rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -24,7 +400,7 @@
 
   <main class="container">
     <div class="grid">
-      <section class="planning-tv">
+      <section class="planning-fallback">
         <div class="planning-hero">
           <div>
             <span class="eyebrow">GWR Weekly Schedule</span>
@@ -41,7 +417,7 @@
           </div>
 
           <div class="countdown-card">
-            <span class="countdown-label">Temps restant</span>
+            <span class="countdown-label" id="countdown-label">Temps restant</span>
             <div class="countdown" id="countdown">
               <span>--<small>jours</small></span>
               <span>--<small>heures</small></span>
@@ -68,11 +444,13 @@
           <div id="weekly-timeline" class="weekly-timeline"></div>
         </section>
 
-        <h3>Horaires officiels</h3>
-        <p>
-          Collision : lundi à 19h. Genesis : jeudi à 19h. Dynasty : vendredi à 20h.
-          Le planning se met à jour automatiquement selon la date et l’heure de ton appareil.
-        </p>
+        <div class="planning-note">
+          <h3>Horaires officiels</h3>
+          <p>
+            Collision : lundi à 19h. Genesis : jeudi à 19h. Dynasty : vendredi à 20h.
+            Le planning se met à jour automatiquement selon la date et l’heure de ton appareil.
+          </p>
+        </div>
       </section>
     </div>
   </main>
@@ -99,6 +477,315 @@
     </small>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    const SHOWS = [
+      {
+        id: "collision",
+        name: "GWR Collision",
+        dayIndex: 1,
+        dayLabel: "Lundi",
+        hour: 19,
+        minute: 0,
+        durationHours: 2,
+        logo: "img/gwr-collision.png",
+        color: "red",
+        link: "rediffs.html#collision"
+      },
+      {
+        id: "genesis",
+        name: "GWR Genesis",
+        dayIndex: 4,
+        dayLabel: "Jeudi",
+        hour: 19,
+        minute: 0,
+        durationHours: 2,
+        logo: "img/gwr-genesis.png",
+        color: "purple",
+        link: "rediffs.html#genesis"
+      },
+      {
+        id: "dynasty",
+        name: "GWR Dynasty",
+        dayIndex: 5,
+        dayLabel: "Vendredi",
+        hour: 20,
+        minute: 0,
+        durationHours: 2,
+        logo: "img/gwr-dynasty.png",
+        color: "blue",
+        link: "rediffs.html#dynasty"
+      }
+    ];
+
+    let countdownTarget = null;
+    let countdownMode = "next";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPlanning();
+      updateCountdown();
+
+      setInterval(updateCountdown, 1000);
+      setInterval(renderPlanning, 30000);
+    });
+
+    function getStartDate(show, now = new Date()) {
+      const date = new Date(now);
+      const currentDay = date.getDay();
+      const difference = show.dayIndex - currentDay;
+
+      date.setDate(date.getDate() + difference);
+      date.setHours(show.hour, show.minute, 0, 0);
+
+      return date;
+    }
+
+    function getEndDate(startDate, show) {
+      const endDate = new Date(startDate);
+      endDate.setHours(endDate.getHours() + show.durationHours);
+      return endDate;
+    }
+
+    function getStatus(show, now = new Date()) {
+      const start = getStartDate(show, now);
+      const end = getEndDate(start, show);
+
+      if (now >= start && now < end) {
+        return {
+          status: "live",
+          label: "En cours",
+          start,
+          end
+        };
+      }
+
+      if (now >= end) {
+        return {
+          status: "past",
+          label: "Show passé",
+          start,
+          end
+        };
+      }
+
+      return {
+        status: "upcoming",
+        label: "À venir",
+        start,
+        end
+      };
+    }
+
+    function getNextShow(now = new Date()) {
+      const live = SHOWS
+        .map(show => ({ show, ...getStatus(show, now) }))
+        .find(item => item.status === "live");
+
+      if (live) {
+        return {
+          show: live.show,
+          date: live.end,
+          mode: "live"
+        };
+      }
+
+      const upcoming = SHOWS.map(show => {
+        const date = getStartDate(show, now);
+
+        if (date <= now) {
+          date.setDate(date.getDate() + 7);
+        }
+
+        return { show, date };
+      }).sort((a, b) => a.date - b.date);
+
+      return {
+        show: upcoming[0].show,
+        date: upcoming[0].date,
+        mode: "next"
+      };
+    }
+
+    function renderPlanning() {
+      const now = new Date();
+      const next = getNextShow(now);
+
+      countdownTarget = next.date;
+      countdownMode = next.mode;
+
+      renderNextShow(next);
+      renderPastShows(now);
+      renderUpcomingShows(now);
+      renderTimeline(now);
+    }
+
+    function renderNextShow(next) {
+      const container = document.getElementById("next-show-card");
+      if (!container) return;
+
+      const isLive = next.mode === "live";
+
+      container.innerHTML = `
+        <div class="next-show-logo">
+          <img src="${next.show.logo}" alt="Logo ${next.show.name}">
+        </div>
+
+        <div class="next-show-info ${next.show.color}">
+          <span class="status-pill ${isLive ? "live" : "next"}">
+            ${isLive ? "En cours maintenant" : "Prochain show"}
+          </span>
+
+          <h3>${next.show.name}</h3>
+
+          <p>${next.show.dayLabel} • ${formatHour(next.show.hour, next.show.minute)}</p>
+
+          <strong>
+            ${isLive ? "Fin estimée : " : "Début : "}
+            ${formatDate(next.date)}
+          </strong>
+
+          <a href="${next.show.link}" role="button">Voir la page du show</a>
+        </div>
+      `;
+    }
+
+    function renderPastShows(now) {
+      const container = document.getElementById("past-shows");
+      if (!container) return;
+
+      const pastShows = SHOWS
+        .map(show => ({ show, ...getStatus(show, now) }))
+        .filter(item => item.status === "past")
+        .sort((a, b) => b.start - a.start);
+
+      container.innerHTML = "";
+
+      if (!pastShows.length) {
+        container.innerHTML = `<p class="empty-message">Aucun show passé cette semaine.</p>`;
+        return;
+      }
+
+      pastShows.forEach(item => {
+        container.appendChild(createMiniCard(item.show, item.start, "past", "Show passé"));
+      });
+    }
+
+    function renderUpcomingShows(now) {
+      const container = document.getElementById("upcoming-shows");
+      if (!container) return;
+
+      const upcomingShows = SHOWS
+        .map(show => ({ show, ...getStatus(show, now) }))
+        .filter(item => item.status === "live" || item.status === "upcoming")
+        .sort((a, b) => a.start - b.start);
+
+      container.innerHTML = "";
+
+      if (upcomingShows.length) {
+        upcomingShows.forEach(item => {
+          container.appendChild(
+            createMiniCard(
+              item.show,
+              item.start,
+              item.status,
+              item.status === "live" ? "En cours" : "À venir"
+            )
+          );
+        });
+        return;
+      }
+
+      const next = getNextShow(now);
+      container.appendChild(createMiniCard(next.show, next.date, "next-week", "Semaine prochaine"));
+    }
+
+    function renderTimeline(now) {
+      const container = document.getElementById("weekly-timeline");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      SHOWS.forEach(show => {
+        const data = getStatus(show, now);
+        const item = document.createElement("article");
+
+        item.className = `timeline-show ${data.status}`;
+        item.innerHTML = `
+          <span>${show.dayLabel}</span>
+          <img src="${show.logo}" alt="Logo ${show.name}">
+          <strong>${formatHour(show.hour, show.minute)}</strong>
+          <small>${data.label}</small>
+        `;
+
+        container.appendChild(item);
+      });
+    }
+
+    function createMiniCard(show, date, status, label) {
+      const card = document.createElement("article");
+      card.className = `show-mini-card ${status}`;
+
+      card.innerHTML = `
+        <img src="${show.logo}" alt="Logo ${show.name}">
+        <div>
+          <span class="status-pill ${status}">${label}</span>
+          <h4>${show.name}</h4>
+          <p>${show.dayLabel} • ${formatHour(show.hour, show.minute)}</p>
+          <small>${formatDate(date)}</small>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function updateCountdown() {
+      const countdown = document.getElementById("countdown");
+      const label = document.getElementById("countdown-label");
+
+      if (!countdown || !countdownTarget) return;
+
+      const now = new Date();
+      const distance = countdownTarget.getTime() - now.getTime();
+
+      if (distance <= 0) {
+        renderPlanning();
+        return;
+      }
+
+      const totalSeconds = Math.floor(distance / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (label) {
+        label.textContent = countdownMode === "live" ? "Fin du show dans" : "Début du show dans";
+      }
+
+      countdown.innerHTML = `
+        <span>${pad(days)}<small>jours</small></span>
+        <span>${pad(hours)}<small>heures</small></span>
+        <span>${pad(minutes)}<small>min</small></span>
+        <span>${pad(seconds)}<small>sec</small></span>
+      `;
+    }
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function formatHour(hour, minute) {
+      return `${pad(hour)}h${minute > 0 ? pad(minute) : ""}`;
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat("fr-FR", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(date);
+    }
+  </script>
 </body>
 </html>
