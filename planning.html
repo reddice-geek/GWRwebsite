@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GWR — Planning</title>
-  <meta name="description" content="Planning hebdomadaire de la Global Wrestling Revolution.">
+  <meta name="description" content="Planning dynamique de la Global Wrestling Revolution.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,44 +12,66 @@
 <body>
   <nav class="container-fluid">
     <ul>
-      <li><strong>GWR Planning</strong></li>
+      <li><strong>GWR</strong></li>
     </ul>
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="shows.html">Shows</a></li>
+      <li><a href="planning.html">Planning</a></li>
       <li><a href="rediffs.html" role="button">Rediffs</a></li>
     </ul>
   </nav>
 
   <main class="container">
     <div class="grid">
-      <section>
-        <hgroup>
-          <h2>Planning GWR</h2>
-          <h3>Le programme de la semaine</h3>
-        </hgroup>
-
-        <p>
-          Le planning met automatiquement le jour actuel en avant.
-          Les jours sans show servent aux promos, annonces, segments et préparations RP.
-        </p>
-
-        <figure>
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=85" alt="Scène lumineuse de spectacle">
-          <figcaption>
-            <a href="https://unsplash.com/" target="_blank">Image d’ambiance via Unsplash</a>
-          </figcaption>
-        </figure>
-
-        <div class="planning-box">
-          <h3 id="today-title">Chargement du planning...</h3>
-          <div id="week-planning" class="week-grid"></div>
+      <section class="planning-tv">
+        <div class="planning-hero">
+          <div>
+            <span class="eyebrow">GWR Weekly Schedule</span>
+            <h2>Planning</h2>
+            <p>
+              Suis les shows passés, les shows à venir et le prochain rendez-vous GWR en temps réel.
+            </p>
+          </div>
         </div>
 
-        <h3>Rythme officiel</h3>
+        <section class="next-show-zone" aria-label="Prochain show GWR">
+          <div class="next-show-card" id="next-show-card">
+            Chargement du prochain show...
+          </div>
+
+          <div class="countdown-card">
+            <span class="countdown-label">Temps restant</span>
+            <div class="countdown" id="countdown">
+              <span>--<small>jours</small></span>
+              <span>--<small>heures</small></span>
+              <span>--<small>min</small></span>
+              <span>--<small>sec</small></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="schedule-columns" aria-label="Shows passés et à venir">
+          <article>
+            <h3>Shows passés</h3>
+            <div id="past-shows" class="schedule-list"></div>
+          </article>
+
+          <article>
+            <h3>Shows à venir</h3>
+            <div id="upcoming-shows" class="schedule-list"></div>
+          </article>
+        </section>
+
+        <section class="week-timeline-box" aria-label="Timeline de la semaine GWR">
+          <h3>Semaine GWR</h3>
+          <div id="weekly-timeline" class="weekly-timeline"></div>
+        </section>
+
+        <h3>Horaires officiels</h3>
         <p>
-          Lundi : Collision. Jeudi : Genesis. Vendredi : Dynasty.
-          Les autres jours permettent de faire vivre les rivalités entre les shows.
+          Collision : lundi à 19h. Genesis : jeudi à 19h. Dynasty : vendredi à 20h.
+          Le planning se met à jour automatiquement selon la date et l’heure de ton appareil.
         </p>
       </section>
     </div>
