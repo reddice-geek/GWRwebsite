@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GWR — Rediffusions</title>
+  <meta name="description" content="Rediffusions YouTube des shows GWR.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>GWR Rediffs</strong></li>
+    </ul>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shows.html">Shows</a></li>
+      <li><a href="about.html" role="button">À propos</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Rediffusions YouTube</h2>
+          <h3>Les playlists officielles de la GWR</h3>
+        </hgroup>
+
+        <p>
+          Les épisodes sont affichés via les playlists YouTube.
+          L’ordre chronologique dépend de l’ordre choisi dans chaque playlist.
+        </p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=85" alt="Public dans une salle de spectacle">
+          <figcaption>
+            <a href="https://unsplash.com/" target="_blank">Image d’ambiance via Unsplash</a>
+          </figcaption>
+        </figure>
+
+        <div class="tabs">
+          <button class="tab-button active" data-tab="collision">Collision</button>
+          <button class="tab-button" data-tab="genesis">Genesis</button>
+          <button class="tab-button" data-tab="dynasty">Dynasty</button>
+        </div>
+
+        <article id="collision" class="tab-panel active">
+          <img class="replay-logo" src="img/gwr-collision.png" alt="Logo GWR Collision">
+          <h3>GWR Collision</h3>
+          <p>Le show du lundi en rediffusion.</p>
+          <div class="video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvWhzsnvjM9No3qA3b8Iokal" title="Playlist GWR Collision" allowfullscreen></iframe>
+          </div>
+          <a href="https://www.youtube.com/watch?v=w6pMmcThvlE&list=PLcqppahImqvWhzsnvjM9No3qA3b8Iokal" target="_blank" role="button">Ouvrir sur YouTube</a>
+        </article>
+
+        <article id="genesis" class="tab-panel">
+          <img class="replay-logo" src="img/gwr-genesis.png" alt="Logo GWR Genesis">
+          <h3>GWR Genesis</h3>
+          <p>Le show du jeudi en rediffusion.</p>
+          <div class="video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvUmvSQ3NSG5izOY7VnWeU1X" title="Playlist GWR Genesis" allowfullscreen></iframe>
+          </div>
+          <a href="https://www.youtube.com/watch?v=DFmwyjlhN7c&list=PLcqppahImqvUmvSQ3NSG5izOY7VnWeU1X" target="_blank" role="button">Ouvrir sur YouTube</a>
+        </article>
+
+        <article id="dynasty" class="tab-panel">
+          <img class="replay-logo" src="img/gwr-dynasty.png" alt="Logo GWR Dynasty">
+          <h3>GWR Dynasty</h3>
+          <p>Le show du vendredi en rediffusion.</p>
+          <div class="video">
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvWwlIveZxeVb_uVkN9lliEC" title="Playlist GWR Dynasty" allowfullscreen></iframe>
+          </div>
+          <a href="https://www.youtube.com/watch?v=_MJ6hWqIul8&list=PLcqppahImqvWwlIveZxeVb_uVkN9lliEC" target="_blank" role="button">Ouvrir sur YouTube</a>
+        </article>
+
+        <h3>Suivre la chronologie</h3>
+        <p>
+          Pour garder une lecture propre de l’histoire GWR, regarde les épisodes dans l’ordre de chaque playlist.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Alertes rediffusions</h2>
+          <h3>Sois prévenu quand une nouvelle vidéo arrive</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
+          <input type="email" id="email" name="email" placeholder="Adresse email" aria-label="Adresse email" required>
+          <button type="submit" onclick="event.preventDefault()">S’inscrire</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer class="container">
+    <small>
+      <a href="index.html">Accueil</a> • <a href="planning.html">Planning</a>
+    </small>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
