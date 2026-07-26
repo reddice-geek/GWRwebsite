@@ -1,83 +1,161 @@
 <!doctype html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GWR — Global Wrestling Revolution</title>
-  <meta name="description" content="Portail officiel de la EFED RP Global Wrestling Revolution.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GWR — Global Wrestling Revolution | E-Fed RP WWE 2K26</title>
+<meta name="description" content="Global Wrestling Revolution - E-Fed RP WWE 2K26. Shows suspendus depuis 12/05/2026. Discord: discord.com/invite/2U9SatYNbg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="img/logo-gwr.png">
 </head>
-
 <body>
-  <nav class="container-fluid">
-    <ul>
-      <li><strong>GWR</strong></li>
-    </ul>
-    <ul>
-      <li><a href="shows.html">Shows</a></li>
-      <li><a href="planning.html">Planning</a></li>
-      <li><a href="rediffs.html" role="button">Rediffs</a></li>
-    </ul>
-  </nav>
 
-  <main class="container">
-    <div class="grid">
-      <section class="hero-page">
-        <hgroup>
-          <h2>Global Wrestling Revolution</h2>
-          <h3>Le portail officiel de la EFED RP GWR</h3>
-        </hgroup>
+<nav>
+  <div class="brand">
+    <img src="img/logo-gwr.png" alt="GWR Logo">
+    <strong>GWR</strong>
+  </div>
+  <div class="links">
+    <a href="#accueil" class="active">Accueil</a>
+    <a href="#shows">Shows</a>
+    <a href="#planning">Planning</a>
+    <a href="#rediffs">Rediffs</a>
+    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn btn-discord">Discord E-Fed</a>
+  </div>
+</nav>
 
-        <p>
-          Collision le lundi, Genesis le jeudi, Dynasty le vendredi.
-          Retrouve les shows, le planning, les rediffusions YouTube et l’univers complet de la GWR.
-        </p>
+<div class="suspend-banner">⚠️ SHOWS SUSPENDUS DEPUIS LE 12/05/2026 • GENESIS ARRÊTÉ DEPUIS LE 07/05/2026 • RETOUR PRÉVU QUAND L'ENGOUEMENT RP REVIENDRA</div>
 
-        <figure>
-          <img class="main-logo" src="img/logo-gwr.png" alt="Logo Global Wrestling Revolution">
-          <figcaption>
-            <a href="shows.html">Découvrir les shows GWR</a>
-          </figcaption>
-        </figure>
+<main class="container">
 
-        <h3>Une fédération RP moderne</h3>
-        <p>
-          La GWR mélange roleplay, rivalités, promos, shows hebdomadaires et continuité narrative,
-          dans une ambiance inspirée des grands shows de catch.
-        </p>
+<section id="accueil" class="hero">
+  <span class="eyebrow">GLOBAL WRESTLING REVOLUTION • E-FED RP WWE 2K26</span>
+  <img class="main-logo" src="img/logo-gwr.png" alt="GWR Global Wrestling Revolution">
+  <h1>Global Wrestling<br>Revolution</h1>
+  <p>Collision le lundi, Genesis le jeudi, Dynasty le vendredi. Une fédération RP moderne où le spectaculaire prime sur la win. Histoires, rivalités, promos, shows hebdomadaires.</p>
+  <div class="badge-pause">⏸️ Fédération en pause depuis le 12/05/2026</div>
+  <div class="actions">
+    <a href="#planning" class="btn btn-dark">Voir le planning</a>
+    <a href="#rediffs" class="btn btn-dark">Voir les rediffs</a>
+    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn btn-discord">🎮 Rejoindre le Discord E-Fed</a>
+  </div>
+</section>
 
-        <h3>Accès rapide</h3>
-        <div class="actions">
-          <a href="planning.html" role="button">Voir le planning</a>
-          <a href="rediffs.html" role="button" class="secondary">Voir les rediffs</a>
-        </div>
-      </section>
+<section id="shows" class="shows-section">
+  <div class="shows-banner">
+    <div>
+      <img src="img/logo-gwr.png" alt="GWR">
+      <h2>Weekly Shows</h2>
     </div>
-  </main>
-
-  <section aria-label="Subscribe example">
-    <div class="container">
-      <article>
-        <hgroup>
-          <h2>Rejoins la révolution</h2>
-          <h3>Inscris ton pseudo RP pour suivre les annonces GWR</h3>
-        </hgroup>
-        <form class="grid">
-          <input type="text" id="firstname" name="firstname" placeholder="Pseudo RP" aria-label="Pseudo RP" required>
-          <input type="email" id="email" name="email" placeholder="Adresse email" aria-label="Adresse email" required>
-          <button type="submit" onclick="event.preventDefault()">S’inscrire</button>
-        </form>
+  </div>
+  <div class="shows-content">
+    <p class="shows-category"><span>GWR:</span> Shows - EN PAUSE DEPUIS 12/05/2026</p>
+    <div class="wwe-show-list">
+      <article class="wwe-show-item suspended">
+        <div class="show-poster"><img src="img/gwr-collision.png" alt="Collision"></div>
+        <div class="show-info red">
+          <span class="pill-suspend">⏸️ SUSPENDU 12/05/2026</span>
+          <span class="show-day">Tous les lundis • 19h</span>
+          <h3>GWR Collision</h3>
+          <p>Le show qui ouvre la semaine. Rivalités directes, confrontations explosives et premiers impacts.</p>
+          <a href="#rediffs" class="btn btn-dark">Voir les rediffs</a>
+        </div>
+      </article>
+      <article class="wwe-show-item suspended">
+        <div class="show-poster"><img src="img/gwr-genesis.png" alt="Genesis"></div>
+        <div class="show-info purple">
+          <span class="pill-suspend">🛑 ARRÊTÉ DEPUIS 07/05/2026</span>
+          <span class="show-day">Tous les jeudis • 19h</span>
+          <h3>GWR Genesis</h3>
+          <p>Le show des révélations. Retours, surprises, nouvelles directions et tournants storyline.</p>
+          <a href="#rediffs" class="btn btn-dark">Voir les rediffs</a>
+        </div>
+      </article>
+      <article class="wwe-show-item suspended">
+        <div class="show-poster"><img src="img/gwr-dynasty.png" alt="Dynasty"></div>
+        <div class="show-info blue">
+          <span class="pill-suspend">⏸️ SUSPENDU 12/05/2026</span>
+          <span class="show-day">Tous les vendredis • 20h</span>
+          <h3>GWR Dynasty</h3>
+          <p>Le show prestige de fin de semaine. Les rivalités montent, les héritages se construisent.</p>
+          <a href="#rediffs" class="btn btn-dark">Voir les rediffs</a>
+        </div>
       </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="container">
-    <small>
-      <a href="about.html">À propos</a> • <a href="planning.html">Planning</a>
-    </small>
-  </footer>
+<section id="planning" class="planning-tv">
+  <div class="planning-hero">
+    <div>
+      <span class="eyebrow">GWR Weekly Schedule • EN PAUSE</span>
+      <h2>Planning</h2>
+      <p>Fédération en pause depuis le 12/05/2026 - Genesis arrêté depuis 07/05/2026</p>
+    </div>
+  </div>
+  <div id="suspend-detail" class="suspend-box"></div>
+  <div class="schedule-columns">
+    <article>
+      <h3>Shows suspendus</h3>
+      <div class="show-mini-card"><img src="img/gwr-collision.png" alt=""><div><strong>Collision</strong><br><small>Lundi 19h • Suspendu 12/05/2026</small></div></div>
+      <div class="show-mini-card"><img src="img/gwr-genesis.png" alt=""><div><strong>Genesis</strong><br><small>Jeudi 19h • Arrêté 07/05/2026</small></div></div>
+      <div class="show-mini-card"><img src="img/gwr-dynasty.png" alt=""><div><strong>Dynasty</strong><br><small>Vendredi 20h • Suspendu 12/05/2026</small></div></div>
+    </article>
+    <article>
+      <h3>Retour futur</h3>
+      <p>La GWR reprendra quand des joueurs motivés voudront créer des histoires, des rivalités et faire le show avant de faire de la win. Spectaculaire d'abord.</p>
+      <p><strong>Tu veux faire partie du retour ?</strong></p>
+      <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn btn-discord">Rejoindre le Discord E-Fed</a>
+    </article>
+  </div>
+</section>
 
-  <script src="js/script.js"></script>
+<section id="rediffs" class="container" style="background:#fff; color:#111; padding:1.5rem; margin-top:1.5rem; box-shadow:0 18px 50px rgba(0,0,0,.35);">
+  <h2 style="color:#111; font-size:2.2rem; font-weight:1000; text-transform:uppercase;">Rediffusions YouTube</h2>
+  <p style="color:#333;">Les épisodes sont affichés via les playlists officielles. Ordre chronologique selon l'ordre des playlists.</p>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="collision">Collision</button>
+    <button class="tab-button" data-tab="genesis">Genesis</button>
+    <button class="tab-button" data-tab="dynasty">Dynasty</button>
+  </div>
+  <article id="collision" class="tab-panel active">
+    <img class="replay-logo" src="img/gwr-collision.png" alt="Collision">
+    <h3 style="color:#111;">GWR Collision</h3>
+    <p style="color:#333;">Show du lundi en rediffusion • Suspendu depuis 12/05/2026</p>
+    <div class="video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvWhzsnvjM9No3qA3b8Iokal" allowfullscreen></iframe></div>
+    <a href="https://www.youtube.com/playlist?list=PLcqppahImqvWhzsnvjM9No3qA3b8Iokal" target="_blank" class="btn btn-red">Ouvrir sur YouTube</a>
+  </article>
+  <article id="genesis" class="tab-panel">
+    <img class="replay-logo" src="img/gwr-genesis.png" alt="Genesis">
+    <h3 style="color:#111;">GWR Genesis</h3>
+    <p style="color:#333;">Show du jeudi • Arrêté depuis 07/05/2026</p>
+    <div class="video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvUmvSQ3NSG5izOY7VnWeU1X" allowfullscreen></iframe></div>
+    <a href="https://www.youtube.com/playlist?list=PLcqppahImqvUmvSQ3NSG5izOY7VnWeU1X" target="_blank" class="btn btn-red">Ouvrir sur YouTube</a>
+  </article>
+  <article id="dynasty" class="tab-panel">
+    <img class="replay-logo" src="img/gwr-dynasty.png" alt="Dynasty">
+    <h3 style="color:#111;">GWR Dynasty</h3>
+    <p style="color:#333;">Show du vendredi • Suspendu depuis 12/05/2026</p>
+    <div class="video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLcqppahImqvWwlIveZxeVb_uVkN9lliEC" allowfullscreen></iframe></div>
+    <a href="https://www.youtube.com/playlist?list=PLcqppahImqvWwlIveZxeVb_uVkN9lliEC" target="_blank" class="btn btn-red">Ouvrir sur YouTube</a>
+  </article>
+</section>
+
+<section class="cta-discord">
+  <img src="img/logo-gwr.png" alt="GWR" style="height:70px; margin-bottom:1rem;">
+  <h2>Rejoins la Révolution</h2>
+  <p>Discord officiel E-Fed GWR - RP, annonces, création de rivalités spectaculaires. On prépare le retour ensemble : histoires avant la win.</p>
+  <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn btn-discord" style="padding:1rem 1.8rem; font-size:1rem;">💬 REJOINDRE LE DISCORD E-FED</a>
+  <p style="margin-top:.8rem; font-size:.8rem; color:#777;">Shows suspendus depuis 12/05/2026 • Genesis arrêté 07/05/2026 • Retour quand l'engouement RP reviendra</p>
+</section>
+
+</main>
+
+<footer>
+  <small>GWR - Global Wrestling Revolution • E-Fed RP WWE 2K26 • En pause depuis 12/05/2026<br>
+  <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" style="color:#c9a447;">Discord E-Fed</a> • Shows suspendus • Genesis arrêté 07/05/2026 • Retour futur</small>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
