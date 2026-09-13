@@ -3,20 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roster — GWR Reboot S2</title>
+<title>Roster & Titres — GWR Reboot S2</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="img/logo-gwr.png">
 <style>
-  /* FIX anti-logo géant */
   .brand-logo{width:40px!important;height:40px!important;object-fit:contain!important}
   .mini-logo{width:64px!important;height:64px!important;object-fit:contain!important;display:inline-block}
-  .card-logo{width:56px!important;height:56px!important;object-fit:contain!important}
+  .card-logo{width:56px!important;height:56px!important;object-fit:contain!important;flex-shrink:0}
+  .title-tier{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 12px;border-radius:100px;display:inline-flex;margin-bottom:10px;font-weight:800}
+  .tier-collision{background:rgba(225,6,0,.12);border:1px solid rgba(225,6,0,.3);color:#ff7a7a}
+  .tier-dynasty{background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3);color:#7dd3fc}
+  .tier-inter{background:rgba(201,164,71,.15);border:1px solid rgba(201,164,71,.4);color:var(--gold)}
+  .tier-future{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted)}
+  .title-name{font-family:'Anton';font-size:22px;text-transform:uppercase;line-height:1}
+  .title-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px}
 </style>
 </head>
 <body>
 <div class="ticker"><div class="ticker-track">
-<span>⚠ ROSTER VIDE • REBOOT TOTAL • SAISON 2 • 0 CATCHEUR • 0 CHAMPION • RECRUTEMENT OUVERT •</span>
-<span>⚠ ROSTER VIDE • REBOOT TOTAL • SAISON 2 • 0 CATCHEUR • 0 CHAMPION • RECRUTEMENT OUVERT •</span>
+<span>⚠ SAISON 2 • NOUVELLE HIÉRARCHIE DE TITRES • WORLD HEAVYWEIGHT COLLISION • GWR CHAMPIONSHIP DYNASTY • INTER-REGIONAL INTER-SHOW • RECRUTEMENT OUVERT •</span>
+<span>⚠ SAISON 2 • NOUVELLE HIÉRARCHIE DE TITRES • WORLD HEAVYWEIGHT COLLISION • GWR CHAMPIONSHIP DYNASTY • INTER-REGIONAL INTER-SHOW • RECRUTEMENT OUVERT •</span>
 </div></div>
 
 <nav>
@@ -27,7 +33,7 @@
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="shows.html">Shows</a>
-    <a href="roster.html" class="active">Roster</a>
+    <a href="roster.html" class="active">Roster & Titres</a>
     <a href="planning.html">Planning</a>
     <a href="rediffs.html">Rediffs</a>
     <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord">Discord</a>
@@ -37,66 +43,132 @@
 
 <main class="container">
   <section>
-    <div class="eyebrow">Saison 2 • Reset complet • Archive S1 supprimée</div>
-    <h1 class="h1">ROSTER <span class="outline">VIDE</span><br>ON REPART DE ZÉRO.</h1>
-    <p class="muted" style="max-width:62ch;line-height:1.6">Pause du 12/05/2026 = reboot total. Plus de champions, plus de catcheurs. On repart vierge pour une S2 100% RP, spectaculaire d'abord. Les titres seront inaugurés par la nouvelle génération.</p>
+    <div class="eyebrow">Saison 2 • Hiérarchie officielle • Tous vacants</div>
+    <h1 class="h1">ROSTER <span class="outline">VIDE</span><br>& TITRES S2</h1>
+    <p class="muted" style="max-width:68ch;line-height:1.6">Reboot total depuis le 12/05/2026. Nouvelle structure claire à la WWE : chaque show a son gros titre et son tag, plus un titre inter-show qui voyage. Aucun porteur, tout est à prendre.</p>
   </section>
 
-  <div class="grid3" style="margin:24px 0">
-    <div class="card"><div class="card-top gold"></div><div class="card-body" style="text-align:center;padding:28px">
-      <b style="font-family:Anton;font-size:56px;display:block">00</b>
-      <span style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">Catcheurs actifs</span>
-    </div></div>
-    <div class="card"><div class="card-top red"></div><div class="card-body" style="text-align:center;padding:28px">
-      <b style="font-family:Anton;font-size:56px;display:block">00</b>
-      <span style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">Champions</span>
-    </div></div>
-    <div class="card"><div class="card-top blue"></div><div class="card-body" style="text-align:center;padding:28px">
-      <b style="font-family:Anton;font-size:22px;display:block;color:var(--gold);margin-top:8px">RECRUTEMENT OUVERT</b>
-      <span style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">Places illimitées</span>
-    </div></div>
+  <div class="grid3" style="margin:20px 0">
+    <div class="card"><div class="card-top gold"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:48px">00</b><div style="font-family:'JetBrains Mono';font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase">Catcheurs<br>Reboot</div></div></div>
+    <div class="card"><div class="card-top red"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:48px">05</b><div style="font-family:'JetBrains Mono';font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase">Titres masculins<br>Tous vacants</div></div></div>
+    <div class="card"><div class="card-top blue"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:20px;color:var(--gold);margin-top:10px;display:block">RECRUTEMENT<br>OUVERT</b></div></div>
   </div>
 
-  <div class="card" style="margin:24px 0">
-    <div class="card-top gold"></div>
-    <div class="card-body" style="padding:22px;display:flex;gap:20px;align-items:flex-start">
-      <img src="img/logo-gwr.png" alt="" class="card-logo" style="flex-shrink:0">
-      <div>
-        <h2 style="font-family:Anton;font-size:24px;text-transform:uppercase">Pourquoi tout effacé ?</h2>
-        <p class="muted" style="margin:8px 0;line-height:1.6">La S1 a fini en manque d'engouement RP. On ne relance pas avec un roster fantôme. Chaque rivalité et chaque ceinture S2 aura une vraie histoire dès le jour 1.</p>
-        <div class="suspend-box">Anciens bienvenus, mais nouveau perso obligatoire. Pas de passe-droit titre.</div>
+  <!-- COLLISION -->
+  <div class="section-head" style="margin-top:28px">
+    <div>
+      <span class="title-tier tier-collision">🔴 Show Collision — Lundi 19h</span>
+      <h2 class="h2" style="margin-top:6px">Collision</h2>
+    </div>
+    <img src="img/gwr-collision.png" alt="" style="width:120px;height:68px;object-fit:cover;border:1px solid var(--border);border-radius:4px">
+  </div>
+  <div class="grid2">
+    <div class="card" style="border-left:3px solid var(--red)">
+      <div class="card-body" style="padding:20px">
+        <span class="title-tier tier-collision">Gros titre Collision</span>
+        <div class="title-name">GWR World Heavyweight<br>Championship</div>
+        <div class="title-desc">Le gros titre de Collision. Équivalent du World Heavyweight WWE. Défendu en main-event du lundi. Ceinture or/noir, prestige brut. Premier champion par tournoi 8 à Collision #1 S2.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacant</span><span class="day" style="margin:0">Sans porteur • Tournoi inaugural prévu</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="padding:20px">
+        <span class="title-tier tier-collision">Tag Team Collision</span>
+        <div class="title-name">GWR Collision Tag<br>Team Championship</div>
+        <div class="title-desc">Titres par équipe exclusifs à Collision. Besoin de 3 teams minimum pour lancer la division. Style rapide, moves en tandem.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacants</span><span class="day" style="margin:0">Sans porteurs</span></div>
       </div>
     </div>
   </div>
 
-  <div class="section-head">
-    <h2 class="h2">Rejoindre la S2</h2>
-    <span class="pill" style="background:rgba(201,164,71,.15);color:var(--gold);border-color:var(--gold)">3 étapes</span>
+  <!-- DYNASTY -->
+  <div class="section-head" style="margin-top:32px">
+    <div>
+      <span class="title-tier tier-dynasty">🔵 Show Dynasty — Vendredi 20h • Prestige</span>
+      <h2 class="h2" style="margin-top:6px">Dynasty</h2>
+    </div>
+    <img src="img/gwr-dynasty.png" alt="" style="width:120px;height:68px;object-fit:cover;border:1px solid var(--border);border-radius:4px">
   </div>
-  <div class="grid3">
-    <div class="card"><div class="card-top red"></div><div class="card-body"><span class="day">ÉTAPE 01</span><h3>Rejoins le Discord</h3><p>Règles RP en 5 min.</p><a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-dark" style="display:block;text-align:center;margin-top:12px">Discord →</a></div></div>
-    <div class="card"><div class="card-top purple"></div><div class="card-body"><span class="day">ÉTAPE 02</span><h3>Crée ton catcheur</h3><p>Nom, gimmick, finisher, 3 traits RP.</p><div class="suspend-box" style="margin-top:10px">#creation-perso sur Discord</div></div></div>
-    <div class="card"><div class="card-top blue"></div><div class="card-body"><span class="day">ÉTAPE 03</span><h3>Premier show</h3><p>On lance dès 6 RP actifs.</p><div class="suspend-box" style="margin-top:10px">Objectif: 6 joueurs • 2 bookers</div></div></div>
+  <div class="grid2">
+    <div class="card" style="border-left:3px solid var(--blue);background:linear-gradient(135deg,#1a1a1f,#131a22)">
+      <div class="card-body" style="padding:20px">
+        <span class="title-tier tier-dynasty" style="background:rgba(201,164,71,.18);color:var(--gold-light);border-color:var(--gold)">👑 GROS TITRE DE LA FED • Style WWE Undisputed</span>
+        <div class="title-name" style="font-size:26px">GWR Championship</div>
+        <div class="title-desc">LE titre suprême de la fédération. Porté à Dynasty mais au-dessus de tout. Style Undisputed WWE Championship. Seul le visage de la GWR le porte. Couronnement au premier PPV S2.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacant • Undisputed</span><span class="day" style="margin:0">Le Graal</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" style="padding:20px">
+        <span class="title-tier tier-dynasty">Tag Team Dynasty</span>
+        <div class="title-name">GWR Dynasty Tag<br>Team Championship</div>
+        <div class="title-desc">Tag prestige du vendredi. Main-event tag de 20 min, storytelling long terme. Équivalent des titres tag de Dynasty, plus lourds que ceux de Collision.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacants</span><span class="day" style="margin:0">Sans porteurs</span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="section-head" style="margin-top:32px"><h2 class="h2">Titres S2</h2><span class="pill">VACANTS</span></div>
-  <div class="grid4">
-    <div class="card"><div class="card-top gold"></div><div class="card-body"><span class="day">World</span><h3>GWR World</h3><p class="muted">Tournoi à 8 au premier PPV.</p><div class="badge" style="margin-top:10px">🏆 Vacant</div></div></div>
-    <div class="card"><div class="card-top red"></div><div class="card-body"><span class="day">Collision</span><h3>Collision Title</h3><p class="muted">Open-challenge lundi.</p><div class="badge" style="margin-top:10px">🏆 Vacant</div></div></div>
-    <div class="card"><div class="card-top purple"></div><div class="card-body"><span class="day">Genesis</span><h3>Genesis Crown</h3><p class="muted">Titre révélation S2.</p><div class="badge" style="margin-top:10px">🏆 Vacant</div></div></div>
-    <div class="card"><div class="card-top blue"></div><div class="card-body"><span class="day">Tag</span><h3>Dynasty Tag</h3><p class="muted">Besoin de 3 teams.</p><div class="badge" style="margin-top:10px">🏆 Vacant</div></div></div>
+  <!-- INTER-REGIONAL -->
+  <div class="section-head" style="margin-top:32px">
+    <div>
+      <span class="title-tier tier-inter">🟡 Inter-Show • Défense libre</span>
+      <h2 class="h2" style="margin-top:6px">Inter-Régional</h2>
+    </div>
+    <img src="img/logo-gwr.png" alt="" class="card-logo">
+  </div>
+  <div class="grid2">
+    <div class="card" style="border-left:3px solid var(--gold);grid-column:span 2">
+      <div class="card-body" style="padding:22px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <span class="title-tier tier-inter">Workhorse • Inter-show</span>
+          <div class="title-name">GWR Inter-Regional<br>Championship</div>
+          <div class="title-desc">Le titre qui voyage. Défendable à Collision ET à Dynasty. Style Intercontinental / US. C'est le titre des bangers chaque semaine, open-challenge possible sur les deux shows. Parfait pour faire monter un mid-carder en main-eventer.</div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="badge">🏆 Vacant</span>
+            <span class="day" style="margin:0">Défendu lundi ET vendredi • Pont entre les shows</span>
+          </div>
+        </div>
+        <div style="flex:0 0 280px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:14px">
+          <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Règles Inter-Régional</div>
+          <ul style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:16px">
+            <li>Défense obligatoire toutes les 2 semaines</li>
+            <li>Peut changer de show si champion drafté</li>
+            <li>Open challenge inter-show autorisé</li>
+            <li>Tremplin vers World Heavyweight ou GWR Champ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="card" style="margin-top:28px;text-align:center;padding:32px;background:linear-gradient(135deg,#15151b,#0f0f12)">
-    <img src="img/logo-gwr.png" alt="" class="mini-logo" style="margin:0 auto 12px">
-    <h2 style="font-family:Anton;font-size:30px;text-transform:uppercase">Prêt à écrire la S2 ?</h2>
-    <p class="muted" style="max-width:48ch;margin:10px auto">Tout le monde part de 0. Meilleur moment pour rejoindre.</p>
-    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord" style="padding:14px 24px;margin-top:8px">💬 REJOINDRE LE DISCORD • RECRUTEMENT OUVERT</a>
+  <!-- FEMININ FUTUR -->
+  <div class="section-head" style="margin-top:32px">
+    <div>
+      <span class="title-tier tier-future">🟣 À venir • Division féminine</span>
+      <h2 class="h2" style="margin-top:6px">Féminin</h2>
+    </div>
+  </div>
+  <div class="card" style="border:1px dashed var(--border);background:rgba(255,255,255,.02)">
+    <div class="card-body" style="padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:28px">👩‍🎤</div>
+      <div style="flex:1">
+        <div class="title-name" style="font-size:18px">Déclinaisons féminines à voir</div>
+        <div class="title-desc">Prévu : GWR Women's Championship (équivalent GWR Champ) + Women's Inter-Regional + Women's Tag. On lance dès qu'on a 4 joueuses féminines RP actives. Template déjà prêt sur Discord.</div>
+      </div>
+      <span class="pill" style="background:rgba(124,58,237,.12);color:#c4b5fd">Bientôt</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:28px;text-align:center;padding:28px;background:linear-gradient(135deg,#15151b,#0f0f12)">
+    <img src="img/logo-gwr.png" alt="" class="mini-logo" style="margin:0 auto 10px">
+    <h2 style="font-family:Anton;font-size:28px;text-transform:uppercase">5 titres vacants. Tout à prendre.</h2>
+    <p class="muted" style="max-width:56ch;margin:8px auto">Collision a son World Heavyweight, Dynasty a le GWR Undisputed, et l'Inter-Régional fait le pont. Tu veux viser lequel en S2 ?</p>
+    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord" style="padding:12px 22px;margin-top:10px">💬 Choisir sa route sur Discord</a>
   </div>
 
 </main>
 
-<footer><div>GWR — Reboot S2 • 0 champion • 0 catcheur</div><div><a href="https://discord.com/invite/2U9SatYNbg" target="_blank">Discord</a></div></footer>
+<footer><div>GWR S2 • 5 titres vacants • Collision World Heavyweight • Dynasty GWR Championship • Inter-Regional</div><div><a href="https://discord.com/invite/2U9SatYNbg" target="_blank">Discord</a></div></footer>
 <script src="js/script.js"></script>
 </body>
 </html>
