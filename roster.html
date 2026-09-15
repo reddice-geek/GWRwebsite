@@ -1,174 +1,245 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roster & Titres — GWR Reboot S2</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="img/logo-gwr.png">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roster S2 — GWR Draft Officiel</title>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="img/logo-gwr.png">
 <style>
-  .brand-logo{width:40px!important;height:40px!important;object-fit:contain!important}
-  .mini-logo{width:64px!important;height:64px!important;object-fit:contain!important;display:inline-block}
-  .card-logo{width:56px!important;height:56px!important;object-fit:contain!important;flex-shrink:0}
-  .title-tier{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 12px;border-radius:100px;display:inline-flex;margin-bottom:10px;font-weight:800}
-  .tier-collision{background:rgba(225,6,0,.12);border:1px solid rgba(225,6,0,.3);color:#ff7a7a}
-  .tier-dynasty{background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3);color:#7dd3fc}
-  .tier-inter{background:rgba(201,164,71,.15);border:1px solid rgba(201,164,71,.4);color:var(--gold)}
-  .tier-future{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted)}
-  .title-name{font-family:'Anton';font-size:22px;text-transform:uppercase;line-height:1}
-  .title-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px}
+.brand-logo{width:40px!important;height:40px!important;object-fit:contain!important}
+.show-header{display:grid;grid-template-columns:1fr 140px;gap:16px;align-items:center;margin-bottom:16px}
+.show-poster{width:140px;height:80px;object-fit:cover;border:1px solid var(--border);border-radius:4px}
+.gm-badge{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:6px 10px;border-radius:100px;display:inline-flex;gap:6px;align-items:center;border:1px solid var(--border)}
+.roster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:1100px){.roster-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.roster-grid{grid-template-columns:1fr}.show-header{grid-template-columns:1fr}}
+.roster-col{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.roster-col-head{padding:10px 12px;font-family:'Anton';font-size:16px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.roster-col-head small{font-family:'JetBrains Mono';font-size:10px;padding:4px 8px;border-radius:100px;background:rgba(255,255,255,.08)}
+.col-h{border-bottom:1px solid var(--border)}
+.roster-list{padding:6px}
+.roster-item{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;border-radius:2px;font-size:13px;transition:.15s;border-bottom:1px solid rgba(255,255,255,.04)}
+.roster-item:last-child{border:0}
+.roster-item:hover{background:rgba(255,255,255,.05)}
+.rating{font-family:'JetBrains Mono';font-weight:800;font-size:12px;min-width:28px;text-align:right}
+.rating.high{color:var(--gold-light)} .rating.low{color:var(--muted)}
+.blue-head{background:linear-gradient(90deg,#0a1a2e,#121e3a);color:#7dd3fc;border-bottom:1px solid #1e3a5f}
+.red-head{background:linear-gradient(90deg,#2a0a0a,#3a1212);color:#ff8a8a;border-bottom:1px solid #5a1a1a}
 </style>
 </head>
 <body>
 <div class="ticker"><div class="ticker-track">
-<span>⚠ SAISON 2 • NOUVELLE HIÉRARCHIE DE TITRES • WORLD HEAVYWEIGHT COLLISION • GWR CHAMPIONSHIP DYNASTY • INTER-REGIONAL INTER-SHOW • RECRUTEMENT OUVERT •</span>
-<span>⚠ SAISON 2 • NOUVELLE HIÉRARCHIE DE TITRES • WORLD HEAVYWEIGHT COLLISION • GWR CHAMPIONSHIP DYNASTY • INTER-REGIONAL INTER-SHOW • RECRUTEMENT OUVERT •</span>
+<span>⚠ GWR DRAFT OFFICIEL S2 • DYNASTY • COLLISION • 100+ SUPERSTARS • CUSTOMS ARRIVENT PLUS TARD • MANAGEUSE AVA • GM RICHARD •</span>
+<span>⚠ GWR DRAFT OFFICIEL S2 • DYNASTY • COLLISION • 100+ SUPERSTARS • CUSTOMS ARRIVENT PLUS TARD • MANAGEUSE AVA • GM RICHARD •</span>
 </div></div>
-
 <nav>
-  <a class="brand" href="index.html">
-    <img src="img/logo-gwr.png" alt="GWR" class="brand-logo">
-    <div class="brand-text"><strong>GLOBAL WRESTLING</strong><small>Revolution • WWE 2K26</small></div>
-  </a>
+  <a class="brand" href="index.html"><img src="img/logo-gwr.png" alt="" class="brand-logo"><div class="brand-text"><strong>GLOBAL WRESTLING</strong><small>Revolution</small></div></a>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="shows.html">Shows</a>
-    <a href="roster.html" class="active">Roster & Titres</a>
-    <a href="planning.html">Planning</a>
-    <a href="rediffs.html">Rediffs</a>
+    <a href="index.html">Accueil</a><a href="shows.html">Shows</a><a href="roster.html" class="active">Roster</a><a href="planning.html">Planning</a><a href="rediffs.html">Rediffs</a>
     <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord">Discord</a>
   </div>
   <button class="burger" id="burger">☰</button>
 </nav>
 
 <main class="container">
-  <section>
-    <div class="eyebrow">Saison 2 • Hiérarchie officielle • Tous vacants</div>
-    <h1 class="h1">ROSTER <span class="outline">VIDE</span><br>& TITRES S2</h1>
-    <p class="muted" style="max-width:68ch;line-height:1.6">Reboot total depuis le 12/05/2026. Nouvelle structure claire à la WWE : chaque show a son gros titre et son tag, plus un titre inter-show qui voyage. Aucun porteur, tout est à prendre.</p>
+  <section style="padding-top:28px">
+    <div class="eyebrow">Draft officiel S2 • 2 shows • 2 GM</div>
+    <h1 class="h1">ROSTER <span class="outline">DRAFT</span><br>S2 COMPLET</h1>
+    <p class="muted" style="max-width:70ch">Roster officiel entre Dynasty (bleu) et Collision (rouge). Les persos custom arriveront plus tard et seront draftés après. Classement par overall WWE 2K.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+      <span class="gm-badge" style="background:rgba(14,165,233,.1);color:#7dd3fc">🔵 Dynasty — Manageuse AVA</span>
+      <span class="gm-badge" style="background:rgba(225,6,0,.1);color:#ff8a8a">🔴 Collision — GM RICHARD</span>
+      <span class="gm-badge">📋 100+ Superstars • Customs bientôt</span>
+    </div>
   </section>
 
-  <div class="grid3" style="margin:20px 0">
-    <div class="card"><div class="card-top gold"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:48px">00</b><div style="font-family:'JetBrains Mono';font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase">Catcheurs<br>Reboot</div></div></div>
-    <div class="card"><div class="card-top red"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:48px">05</b><div style="font-family:'JetBrains Mono';font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase">Titres masculins<br>Tous vacants</div></div></div>
-    <div class="card"><div class="card-top blue"></div><div class="card-body" style="text-align:center;padding:24px"><b style="font-family:Anton;font-size:20px;color:var(--gold);margin-top:10px;display:block">RECRUTEMENT<br>OUVERT</b></div></div>
-  </div>
+  <!-- DYNASTY -->
+  <section style="margin-top:32px">
+    <div class="show-header">
+      <div>
+        <span class="title-tier" style="background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3);color:#7dd3fc;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:100px">DYNASTY DRAFT • Bleu • Manageuse Ava</span>
+        <h2 class="h2" style="margin-top:8px">Dynasty</h2>
+        <p class="muted">Une seule fédération, une seule famille. Le futur s'écrit ensemble.</p>
+      </div>
+      <img src="img/gwr-dynasty.png" alt="" class="show-poster">
+    </div>
+
+    <div class="roster-grid">
+      <!-- Hommes 85+ Dynasty -->
+      <div class="roster-col"><div class="roster-col-head blue-head"><span>HOMMES 85+</span><small>20</small></div><div class="roster-list">
+        <div class="roster-item"><span>AJ Styles</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Cody Rhodes</span><span class="rating high">95</span></div>
+        <div class="roster-item"><span>Ilja Dragunov</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Jacob Fatu</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Jeff Hardy</span><span class="rating high">92</span></div>
+        <div class="roster-item"><span>Jey Uso</span><span class="rating high">91</span></div>
+        <div class="roster-item"><span>Jimmy Uso</span><span class="rating high">86</span></div>
+        <div class="roster-item"><span>Kevin Owens</span><span class="rating high">87</span></div>
+        <div class="roster-item"><span>Logan Paul</span><span class="rating high">90</span></div>
+        <div class="roster-item"><span>Matt Hardy</span><span class="rating high">91</span></div>
+        <div class="roster-item"><span>OBA Femi</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Rey Mysterio</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Roman Reigns</span><span class="rating high">95</span></div>
+        <div class="roster-item"><span>Sami Zayn</span><span class="rating high">89</span></div>
+        <div class="roster-item"><span>Sandman</span><span class="rating high">86</span></div>
+        <div class="roster-item"><span>Seth Rollins</span><span class="rating high">94</span></div>
+        <div class="roster-item"><span>Sheamus</span><span class="rating high">86</span></div>
+        <div class="roster-item"><span>Shawn Michaels</span><span class="rating high">87</span></div>
+        <div class="roster-item"><span>Shinsuke Nakamura</span><span class="rating high">86</span></div>
+        <div class="roster-item"><span>Triple H</span><span class="rating high">91</span></div>
+      </div></div>
+
+      <!-- Hommes <85 Dynasty -->
+      <div class="roster-col"><div class="roster-col-head"><span>HOMMES &lt;85</span><small>17</small></div><div class="roster-list">
+        <div class="roster-item"><span>Akira Tozawa</span><span class="rating low">68</span></div>
+        <div class="roster-item"><span>Aleister Black</span><span class="rating low">84</span></div>
+        <div class="roster-item"><span>Angel</span><span class="rating low">72</span></div>
+        <div class="roster-item"><span>Apollo Crews</span><span class="rating low">70</span></div>
+        <div class="roster-item"><span>Axiom</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Berto</span><span class="rating low">72</span></div>
+        <div class="roster-item"><span>Boogeyman</span><span class="rating low">74</span></div>
+        <div class="roster-item"><span>Danhausen</span><span class="rating low">82</span></div>
+        <div class="roster-item"><span>Doink the Clown</span><span class="rating low">74</span></div>
+        <div class="roster-item"><span>Dragon Lee</span><span class="rating low">79</span></div>
+        <div class="roster-item"><span>Johnny Gargano</span><span class="rating low">76</span></div>
+        <div class="roster-item"><span>Pagano</span><span class="rating low">81</span></div>
+        <div class="roster-item"><span>Psycho Clown</span><span class="rating low">84</span></div>
+        <div class="roster-item"><span>R-Truth</span><span class="rating low">80</span></div>
+        <div class="roster-item"><span>Rey Fenix</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>Ricky Saints</span><span class="rating low">81</span></div>
+        <div class="roster-item"><span>Trick Williams</span><span class="rating low">84</span></div>
+      </div></div>
+
+      <!-- Femmes 85+ Dynasty -->
+      <div class="roster-col"><div class="roster-col-head blue-head"><span>FEMMES 85+</span><small>12</small></div><div class="roster-list">
+        <div class="roster-item"><span>Alexa Bliss</span><span class="rating high">87</span></div>
+        <div class="roster-item"><span>Asuka</span><span class="rating high">91</span></div>
+        <div class="roster-item"><span>Becky Lynch</span><span class="rating high">94</span></div>
+        <div class="roster-item"><span>Bianca Belair</span><span class="rating high">94</span></div>
+        <div class="roster-item"><span>Charlotte Flair</span><span class="rating high">93</span></div>
+        <div class="roster-item"><span>Chelsea Green</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Flammer</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Iyo Sky</span><span class="rating high">93</span></div>
+        <div class="roster-item"><span>Lita</span><span class="rating high">87</span></div>
+        <div class="roster-item"><span>Nia Jax</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Stephanie Vaquer</span><span class="rating high">92</span></div>
+        <div class="roster-item"><span>Tiffany Stratton</span><span class="rating high">91</span></div>
+      </div></div>
+
+      <!-- Femmes <85 Dynasty -->
+      <div class="roster-col"><div class="roster-col-head"><span>FEMMES &lt;85</span><small>12</small></div><div class="roster-list">
+        <div class="roster-item"><span>B-Fab</span><span class="rating low">67</span></div>
+        <div class="roster-item"><span>Blake Monroe</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>Fallon Henley</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>Izzi Dame</span><span class="rating low">76</span></div>
+        <div class="roster-item"><span>Kairi Sane</span><span class="rating low">84</span></div>
+        <div class="roster-item"><span>Kiana James</span><span class="rating low">73</span></div>
+        <div class="roster-item"><span>Lady Shani</span><span class="rating low">80</span></div>
+        <div class="roster-item"><span>Maxxine Dupri</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>Nikkita Lyons</span><span class="rating low">73</span></div>
+        <div class="roster-item"><span>Nikki Cross</span><span class="rating low">73</span></div>
+        <div class="roster-item"><span>Sol Ruca</span><span class="rating low">77</span></div>
+        <div class="roster-item"><span>Zoey Stark</span><span class="rating low">80</span></div>
+      </div></div>
+    </div>
+  </section>
 
   <!-- COLLISION -->
-  <div class="section-head" style="margin-top:28px">
-    <div>
-      <span class="title-tier tier-collision">🔴 Show Collision — Lundi 19h</span>
-      <h2 class="h2" style="margin-top:6px">Collision</h2>
-    </div>
-    <img src="img/gwr-collision.png" alt="" style="width:120px;height:68px;object-fit:cover;border:1px solid var(--border);border-radius:4px">
-  </div>
-  <div class="grid2">
-    <div class="card" style="border-left:3px solid var(--red)">
-      <div class="card-body" style="padding:20px">
-        <span class="title-tier tier-collision">Gros titre Collision</span>
-        <div class="title-name">GWR World Heavyweight<br>Championship</div>
-        <div class="title-desc">Le gros titre de Collision. Équivalent du World Heavyweight WWE. Défendu en main-event du lundi. Ceinture or/noir, prestige brut. Premier champion par tournoi 8 à Collision #1 S2.</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacant</span><span class="day" style="margin:0">Sans porteur • Tournoi inaugural prévu</span></div>
+  <section style="margin-top:40px">
+    <div class="show-header">
+      <div>
+        <span class="title-tier" style="background:rgba(225,6,0,.12);border:1px solid rgba(225,6,0,.3);color:#ff8a8a;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:100px">COLLISION DRAFT • Rouge • GM Richard</span>
+        <h2 class="h2" style="margin-top:8px">Collision</h2>
+        <p class="muted">Détermination, Passion, Collision. Le meilleur de la lutte mondiale.</p>
       </div>
+      <img src="img/gwr-collision.png" alt="" class="show-poster">
     </div>
-    <div class="card">
-      <div class="card-body" style="padding:20px">
-        <span class="title-tier tier-collision">Tag Team Collision</span>
-        <div class="title-name">GWR Collision Tag<br>Team Championship</div>
-        <div class="title-desc">Titres par équipe exclusifs à Collision. Besoin de 3 teams minimum pour lancer la division. Style rapide, moves en tandem.</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacants</span><span class="day" style="margin:0">Sans porteurs</span></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- DYNASTY -->
-  <div class="section-head" style="margin-top:32px">
-    <div>
-      <span class="title-tier tier-dynasty">🔵 Show Dynasty — Vendredi 20h • Prestige</span>
-      <h2 class="h2" style="margin-top:6px">Dynasty</h2>
-    </div>
-    <img src="img/gwr-dynasty.png" alt="" style="width:120px;height:68px;object-fit:cover;border:1px solid var(--border);border-radius:4px">
-  </div>
-  <div class="grid2">
-    <div class="card" style="border-left:3px solid var(--blue);background:linear-gradient(135deg,#1a1a1f,#131a22)">
-      <div class="card-body" style="padding:20px">
-        <span class="title-tier tier-dynasty" style="background:rgba(201,164,71,.18);color:var(--gold-light);border-color:var(--gold)">👑 GROS TITRE DE LA FED • Style WWE Undisputed</span>
-        <div class="title-name" style="font-size:26px">GWR Championship</div>
-        <div class="title-desc">LE titre suprême de la fédération. Porté à Dynasty mais au-dessus de tout. Style Undisputed WWE Championship. Seul le visage de la GWR le porte. Couronnement au premier PPV S2.</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacant • Undisputed</span><span class="day" style="margin:0">Le Graal</span></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body" style="padding:20px">
-        <span class="title-tier tier-dynasty">Tag Team Dynasty</span>
-        <div class="title-name">GWR Dynasty Tag<br>Team Championship</div>
-        <div class="title-desc">Tag prestige du vendredi. Main-event tag de 20 min, storytelling long terme. Équivalent des titres tag de Dynasty, plus lourds que ceux de Collision.</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="badge">🏆 Vacants</span><span class="day" style="margin:0">Sans porteurs</span></div>
-      </div>
-    </div>
-  </div>
+    <div class="roster-grid">
+      <div class="roster-col"><div class="roster-col-head red-head"><span>HOMMES 85+</span><small>19</small></div><div class="roster-list">
+        <div class="roster-item"><span>Brock Lesnar</span><span class="rating high">94</span></div>
+        <div class="roster-item"><span>Carmelo Hayes</span><span class="rating high">84</span></div>
+        <div class="roster-item"><span>DDP</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Drew McIntyre</span><span class="rating high">93</span></div>
+        <div class="roster-item"><span>John Cena</span><span class="rating high">97</span></div>
+        <div class="roster-item"><span>CM Punk</span><span class="rating high">94</span></div>
+        <div class="roster-item"><span>Penta</span><span class="rating high">84</span></div>
+        <div class="roster-item"><span>Randy Orton</span><span class="rating high">92</span></div>
+        <div class="roster-item"><span>Rikishi</span><span class="rating high">81</span></div>
+        <div class="roster-item"><span>Hulk Hogan</span><span class="rating high">95</span></div>
+        <div class="roster-item"><span>Bam Bam Bigelow</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Undertaker</span><span class="rating high">96</span></div>
+        <div class="roster-item"><span>Batista</span><span class="rating high">89</span></div>
+        <div class="roster-item"><span>LA Knight</span><span class="rating high">89</span></div>
+        <div class="roster-item"><span>Stone Cold</span><span class="rating high">97</span></div>
+        <div class="roster-item"><span>Umaga</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Wade Barrett</span><span class="rating high">85</span></div>
+        <div class="roster-item"><span>Bron Breakker</span><span class="rating high">90</span></div>
+        <div class="roster-item"><span>Finn Bálor</span><span class="rating high">88</span></div>
+      </div></div>
 
-  <!-- INTER-REGIONAL -->
-  <div class="section-head" style="margin-top:32px">
-    <div>
-      <span class="title-tier tier-inter">🟡 Inter-Show • Défense libre</span>
-      <h2 class="h2" style="margin-top:6px">Inter-Régional</h2>
-    </div>
-    <img src="img/logo-gwr.png" alt="" class="card-logo">
-  </div>
-  <div class="grid2">
-    <div class="card" style="border-left:3px solid var(--gold);grid-column:span 2">
-      <div class="card-body" style="padding:22px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
-          <span class="title-tier tier-inter">Workhorse • Inter-show</span>
-          <div class="title-name">GWR Inter-Regional<br>Championship</div>
-          <div class="title-desc">Le titre qui voyage. Défendable à Collision ET à Dynasty. Style Intercontinental / US. C'est le titre des bangers chaque semaine, open-challenge possible sur les deux shows. Parfait pour faire monter un mid-carder en main-eventer.</div>
-          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <span class="badge">🏆 Vacant</span>
-            <span class="day" style="margin:0">Défendu lundi ET vendredi • Pont entre les shows</span>
-          </div>
-        </div>
-        <div style="flex:0 0 280px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:14px">
-          <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Règles Inter-Régional</div>
-          <ul style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:16px">
-            <li>Défense obligatoire toutes les 2 semaines</li>
-            <li>Peut changer de show si champion drafté</li>
-            <li>Open challenge inter-show autorisé</li>
-            <li>Tremplin vers World Heavyweight ou GWR Champ</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="roster-col"><div class="roster-col-head"><span>HOMMES &lt;85</span><small>14</small></div><div class="roster-list">
+        <div class="roster-item"><span>Grayson Waller</span><span class="rating low">73</span></div>
+        <div class="roster-item"><span>Je'von Evans</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>La Parka</span><span class="rating low">76</span></div>
+        <div class="roster-item"><span>Rikishi</span><span class="rating low">81</span></div>
+        <div class="roster-item"><span>Xavier Woods</span><span class="rating low">83</span></div>
+        <div class="roster-item"><span>Tyler Breeze</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Josh Briggs</span><span class="rating low">74</span></div>
+        <div class="roster-item"><span>Kit Wilson</span><span class="rating low">77</span></div>
+        <div class="roster-item"><span>Ludwig Kaiser</span><span class="rating low">77</span></div>
+        <div class="roster-item"><span>Myles Borne</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Noam Dar</span><span class="rating low">76</span></div>
+        <div class="roster-item"><span>Shawn Spears</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Tank Ledger</span><span class="rating low">77</span></div>
+        <div class="roster-item"><span>Angelo Dawkins</span><span class="rating low">78</span></div>
+      </div></div>
 
-  <!-- FEMININ FUTUR -->
-  <div class="section-head" style="margin-top:32px">
-    <div>
-      <span class="title-tier tier-future">🟣 À venir • Division féminine</span>
-      <h2 class="h2" style="margin-top:6px">Féminin</h2>
-    </div>
-  </div>
-  <div class="card" style="border:1px dashed var(--border);background:rgba(255,255,255,.02)">
-    <div class="card-body" style="padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <div style="font-size:28px">👩‍🎤</div>
-      <div style="flex:1">
-        <div class="title-name" style="font-size:18px">Déclinaisons féminines à voir</div>
-        <div class="title-desc">Prévu : GWR Women's Championship (équivalent GWR Champ) + Women's Inter-Regional + Women's Tag. On lance dès qu'on a 4 joueuses féminines RP actives. Template déjà prêt sur Discord.</div>
-      </div>
-      <span class="pill" style="background:rgba(124,58,237,.12);color:#c4b5fd">Bientôt</span>
-    </div>
-  </div>
+      <div class="roster-col"><div class="roster-col-head red-head"><span>FEMMES 85+</span><small>11</small></div><div class="roster-list">
+        <div class="roster-item"><span>Liv Morgan</span><span class="rating high">92</span></div>
+        <div class="roster-item"><span>Rhea Ripley</span><span class="rating high">97</span></div>
+        <div class="roster-item"><span>Bayley</span><span class="rating high">89</span></div>
+        <div class="roster-item"><span>Nikki Bella</span><span class="rating high">88</span></div>
+        <div class="roster-item"><span>Giulia</span><span class="rating high">86</span></div>
+        <div class="roster-item"><span>AJ Lee</span><span class="rating high">87</span></div>
+        <div class="roster-item"><span>Michin</span><span class="rating high">82</span></div>
+        <div class="roster-item"><span>Naomi</span><span class="rating high">92</span></div>
+        <div class="roster-item"><span>Tatum Paxley</span><span class="rating high">75</span></div>
+        <div class="roster-item"><span>Lash Legend</span><span class="rating high">81</span></div>
+        <div class="roster-item"><span>Trish Stratus</span><span class="rating high">89</span></div>
+      </div></div>
 
-  <div class="card" style="margin-top:28px;text-align:center;padding:28px;background:linear-gradient(135deg,#15151b,#0f0f12)">
-    <img src="img/logo-gwr.png" alt="" class="mini-logo" style="margin:0 auto 10px">
-    <h2 style="font-family:Anton;font-size:28px;text-transform:uppercase">5 titres vacants. Tout à prendre.</h2>
-    <p class="muted" style="max-width:56ch;margin:8px auto">Collision a son World Heavyweight, Dynasty a le GWR Undisputed, et l'Inter-Régional fait le pont. Tu veux viser lequel en S2 ?</p>
-    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord" style="padding:12px 22px;margin-top:10px">💬 Choisir sa route sur Discord</a>
+      <div class="roster-col"><div class="roster-col-head"><span>FEMMES &lt;85</span><small>13</small></div><div class="roster-list">
+        <div class="roster-item"><span>Lola Vice</span><span class="rating low">78</span></div>
+        <div class="roster-item"><span>Thea Hail</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Brie Bella</span><span class="rating low">87</span></div>
+        <div class="roster-item"><span>Zaria</span><span class="rating low">75</span></div>
+        <div class="roster-item"><span>Candice LeRae</span><span class="rating low">73</span></div>
+        <div class="roster-item"><span>Jaida Parker</span><span class="rating low">77</span></div>
+        <div class="roster-item"><span>Natalya</span><span class="rating low">86</span></div>
+        <div class="roster-item"><span>Kelani Jordan</span><span class="rating low">79</span></div>
+        <div class="roster-item"><span>Raquel Rodriguez</span><span class="rating low">86</span></div>
+        <div class="roster-item"><span>Zelina Vega</span><span class="rating low">83</span></div>
+        <div class="roster-item"><span>Ivy Nile</span><span class="rating low">76</span></div>
+        <div class="roster-item"><span>Jacy Jayne</span><span class="rating low">80</span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="card" style="margin-top:32px;border:1px dashed var(--border);background:rgba(255,255,255,.02)"><div class="card-body" style="padding:18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <div style="font-size:26px">🎮</div>
+    <div style="flex:1"><h3 style="font-family:Anton;text-transform:uppercase;font-size:18px">Persos custom arrivent plus tard</h3><p class="muted" style="font-size:12px">Les créations originales seront intégrées après le draft WWE. Slot réservé dans chaque show.</p></div>
+    <span class="pill">Bientôt</span>
+  </div></div>
+
+  <div class="card" style="margin-top:20px;text-align:center;padding:26px;background:linear-gradient(135deg,#15151b,#0f0f12)">
+    <img src="img/logo-gwr.png" alt="" style="width:64px;height:64px;object-fit:contain;margin:0 auto 10px">
+    <h2 style="font-family:Anton;font-size:26px;text-transform:uppercase">Titres S2 — Tous vacants</h2>
+    <p class="muted" style="max-width:56ch;margin:8px auto;font-size:13px">Collision: World Heavyweight + Tag Collision • Dynasty: GWR Championship (Undisputed) + Tag Dynasty • Inter-Regional inter-show • Féminin à venir</p>
+    <a href="https://discord.com/invite/2U9SatYNbg" target="_blank" class="btn-discord" style="margin-top:10px">Voir la hiérarchie des titres →</a>
   </div>
 
 </main>
-
-<footer><div>GWR S2 • 5 titres vacants • Collision World Heavyweight • Dynasty GWR Championship • Inter-Regional</div><div><a href="https://discord.com/invite/2U9SatYNbg" target="_blank">Discord</a></div></footer>
+<footer><div>GWR Draft S2 • Dynasty: Ava • Collision: Richard • 100+ Superstars</div><div><a href="https://discord.com/invite/2U9SatYNbg" target="_blank">Discord</a></div></footer>
 <script src="js/script.js"></script>
 </body>
 </html>
